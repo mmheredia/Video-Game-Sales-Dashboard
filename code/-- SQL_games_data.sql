@@ -11,7 +11,7 @@ CREATE TABLE games_data(
 	year INT, 
 	genre TEXT, 
 	publisher TEXT,
-    na_sales FLOAT, 
+  na_sales FLOAT, 
 	eu_sales FLOAT,
 	jp_sales FLOAT,
 	other_sales FLOAT,
