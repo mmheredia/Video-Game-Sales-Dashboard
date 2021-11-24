@@ -71,8 +71,9 @@
                   </tr>
               </thead>
               <tbody>
-                    {% for row in range(45) %}
+                    {% for row in data %}
                     <tr>
+                        <!-- <td>table stuff</td>
                         <td>table stuff</td>
                         <td>table stuff</td>
                         <td>table stuff</td>
@@ -82,9 +83,8 @@
                         <td>table stuff</td>
                         <td>table stuff</td>
                         <td>table stuff</td>
-                        <td>table stuff</td>
-                        <td>stuff</td>
-                        <!-- <td>{{ row[0] }}</td>
+                        <td>stuff</td> -->
+                        <td>{{ row[0] }}</td>
                         <td>{{ row[1] }}</td>
                         <td>{{ row[2] }}</td>
                         <td>{{ row[3] }}</td>
@@ -94,7 +94,7 @@
                         <td>{{ row[7] }}</td>
                         <td>{{ row[8] }}</td>
                         <td>{{ row[9] }}</td>
-                        <td>{{ row[10] }}</td> -->
+                        <td>{{ row[10] }}</td>
                     </tr>
                     {% endfor %}
               </tbody>

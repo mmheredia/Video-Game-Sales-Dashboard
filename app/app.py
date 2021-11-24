@@ -13,7 +13,7 @@ cursor = con.cursor()
 # Route Section
 @app.route('/', methods=['get'])
 def index():
-    cursor.execute("select * from games_data")
+    cursor.execute("select * from games_data FETCH FIRST 25 ROWS ONLY")
     result = cursor.fetchall()
     return render_template("index.html", data=result)
 
