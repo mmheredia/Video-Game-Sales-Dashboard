@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@300&display=swap');
+
 body {
   background-color: #111111;
   color: white !important;
+  font-family: 'Roboto', sans-serif;
 }
 
 .container {
   width: 100%;
-  padding-bottom: 1rem;
+  padding-bottom: 3rem;
+  display: flex;
 }
 
 nav {
@@ -13,28 +17,77 @@ nav {
   font-size: 30px;
   padding-left: 5rem;
   padding-top: 3px;
+  width: 100%;
+}
+
+caption {
+  display: table-caption;
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  color: #FFFFFF;
 }
 
 a {
   color: white;
 }
 
-table, th, td {
-  border: 1px solid white;
+a:hover{
+  color: yellow;
+  text-decoration: none;
 }
 
 th, td {
   text-align: center;
+  border: 1px solid white;
+  white-space: nowrap;
+  padding: 5px;
+  overflow: hidden;
 }
 
-.table {
+table {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid white;
+  font-family: 'Nunito', san-serif;
+}
+
+caption {
+  font-weight: 400;
+  font-size: 25px;
+  padding-bottom: 20px;
 }
 
 col {
-  width: 300px;
+  width: 250px;
 }
+
+.pie, .bar {
+  padding: 10rem 30rem 10rem;
+  background-color: #222222;
+  text-align: center;
+  margin: 7rem;
+
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+.row {
+  display: inline-block;
+}
+
+i {
+  color: yellow;
+  padding-right: 10px;
+}
+
+
+
+
 
 

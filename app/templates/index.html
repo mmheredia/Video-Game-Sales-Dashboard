@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href={{url_for('static', filename='css/style.css')}}>
+    <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href={{url_for('static',
+        filename='css/style.css'
+        )}}>
     <title>Video Game Dashboard</title>
 </head>
+
 <body>
     <div class="container">
         <nav class="navbar">
-            <a class="navbar-head" href="index.html">DASHBOARD</a>
+            <a class="navbar-head"
+                href="index.html"><i
+                    class="fas fa-gamepad"></i> DASHBOARD</a>
         </nav>
     </div>
-        <div class="container">
-            <table class="table table-condensed">
-                <colgroup>
+    <div class="container">
+      <div class="wrapper">
+        <div class="row">
+          <div class="bar">
+              <p>BAR</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="pie">
+              <p>PIE</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+          <table>
+              <caption>DATA TABLE</caption>
+              <colgroup>
                     <col class="sm">
                     <col class="md">
                     <col class="md">
@@ -28,43 +54,56 @@
                     <col class="md">
                     <col class="md">
                     <col class="md">
-                </colgroup>
-                <thead class="thead">
-                    <tr>
-                      <th>Rank</th>
-                      <th>Name</th>
-                      <th>Platform</th>
-                      <th>Year</th>
-                      <th>Genre</th>
-                      <th>Publisher</th>
-                      <th>NA Sales</th>
-                      <th>EU Sales</th>
-                      <th>JP Sales</th>
-                      <th>Other Sales</th>
-                      <th>Global Sales</th>
-                    </tr>
-                </thead>
-                <tbody>
+              </colgroup>
+              <thead class="thead">
+                  <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Platform</th>
+                        <th>Year</th>
+                        <th>Genre</th>
+                        <th>Publisher</th>
+                        <th>NA Sales</th>
+                        <th>EU Sales</th>
+                        <th>JP Sales</th>
+                        <th>Other Sales</th>
+                        <th>Global Sales</th>
+                  </tr>
+              </thead>
+              <tbody>
                     {% for row in data %}
-                        <tr>
-                            <td>{{ row[0] }}</td>
-                            <td>{{ row[1] }}</td>
-                            <td>{{ row[2] }}</td>
-                            <td>{{ row[3] }}</td>
-                            <td>{{ row[4] }}</td>
-                            <td>{{ row[5] }}</td>
-                            <td>{{ row[6] }}</td>
-                            <td>{{ row[7] }}</td>
-                            <td>{{ row[8] }}</td>
-                            <td>{{ row[9] }}</td>
-                            <td>{{ row[10] }}</td>
-                        </tr>
+                    <tr>
+                        <!-- <td>table stuff</td>
+                        <td>table stuff</td>
+                        <td>table stuff</td>
+                        <td>table stuff</td>
+                        <td>table stuff</td>
+                        <td>table stuff</td>
+                        <td>table stuff</td>
+                        <td>table stuff</td>
+                        <td>table stuff</td>
+                        <td>table stuff</td>
+                        <td>stuff</td> -->
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td>{{ row[6] }}</td>
+                        <td>{{ row[7] }}</td>
+                        <td>{{ row[8] }}</td>
+                        <td>{{ row[9] }}</td>
+                        <td>{{ row[10] }}</td>
+                    </tr>
                     {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div>
-        </div>
-    <script src={{url_for('static', filename='js/script.js')}}></script>
+              </tbody>
+          </table>
+    </div>
+    <script src={{url_for('static',
+        filename='js/script.js'
+        )}}>
+    </script>
 </body>
+
 </html>
