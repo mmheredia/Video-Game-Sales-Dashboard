@@ -66,10 +66,10 @@ col {
 }
 
 .pie, .bar {
-  padding: 10rem 30rem 10rem;
+  padding: 10rem 25rem 10rem;
   background-color: #222222;
   text-align: center;
-  margin: 7rem;
+  margin: 5rem;
 
 }
 

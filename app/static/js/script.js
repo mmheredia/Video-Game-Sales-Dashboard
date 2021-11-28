@@ -1,18 +1,21 @@
 function init() {
-  //  Grab dropdown event handler id
-  const selector = d3.select("#selDataset");
-
   // Populate select options
-  d3.json("/static/data/games.json").then((data) => {
-    console.log(data.rank)
-    let dataRanks = data;
-    dataRanks.forEach((rank) => {
-      selector 
-        .append("option")
-        .text(rank)
-        .property("value", rank);
-    });
+  d3.json("/static/data/games.json").then((results) => {
+    let gameList = []
+    let data = results.data
+    for (let i = 0; i < data.length; i++){
+      gameList.push(data[i])
+      let gameName = gameList[i]["name"]
+      let gameRank = gameList[i]["rank"]
+      let gameSales = gameList[i]["global_sales"]
+      console.log(gameName, gameRank, gameSales)
+    }
   });
 }
-// Initialize dashboard app
+
+
+
 init()
+
+
+
