@@ -1,3 +1,4 @@
+// SAMPLE FUNCTION SHOWING HOW TO GRAB JSON DATA
 function init() {
   // Populate select options
   d3.json("/static/data/games.json").then((results) => {
@@ -8,14 +9,14 @@ function init() {
       let gameName = gameList[i]["name"]
       let gameRank = gameList[i]["rank"]
       let gameSales = gameList[i]["global_sales"]
-      console.log(gameName, gameRank, gameSales)
     }
   });
 }
-
-
-
 init()
+
+
+
+
 
 
 
