@@ -74,8 +74,43 @@ function barChart() {
 
 /////// PIE CHART FUNCTION ////////
 
-function pieChart() {}
+function pieChart() {
+// Read in data with JSON
+d3.json('static/data/games.json').then((json_data) => {
+  // Grab json data
+  let data = json_data
+  console.log(json_data)
+  let sampleGenre = []
+  let sampleRank = []
+  // Loop through 100
+  for (let i = 0; i <= 49; i++) {
+    sampleGenre.push(data[i].genre)
+    sampleRank.push(data[i].rank)
+  }
+  let pieValues = sampleGenre
+   .slice(0, 10)
+  let pieData = [
+   { 
+    values: sampleRank,
+    labels: pieValues,
+    type: 'pie',
+    marker: {
+      colors: ['#002047','#084081', '#0868ac', '#2b8cbe', '#4eb3d3', '#7bccc4', '#a8ddb5', '#ccebc5', '#e0f3db' ,'#f7fcf0']
+    }
+  }]
+  
+  let pieLayout = {
+    title: {
+      text: 'Pie Chart'
+    },
+    showlegend: true
+  }
 
+  Plotly.newplot('pie', pieData, pieLayout)
+
+ })
+  console.log('GLHF')
+}
 /////// LINE GRAPH FUNCTION ////////
 
 function lineChart() {}
