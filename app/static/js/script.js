@@ -29,7 +29,7 @@ d3.json('static/data/games.json').then(function (json_data){
     type: 'bar',
     hoverinfo: sampleNames.slice(0,100).reverse(),
     marker: {
-      color: "maroon",
+      color: "blue",
     },
   }]
   let barLayout = {
