@@ -1,20 +1,46 @@
 # Video-Game-Sales-Dashboard
 
 ## Directory Structure
----
+
+
 ```
 Video-Games-Sales-Dashboard
-├───app
-│   ├───static
-│   │   ├───css
-│   │   ├───data
-│   │   ├───img
-│   │   └───js
-│   ├───templates
-│   └───__pycache__
-├───code
-│   ├───csv_data
-│   ├───ipynb
-│   └───scraper
-└───sql
+|   .gitignore
+|   README.md
+|   requirements.txt
+|
++---app
+|   |   app.py
+|   |
+|   +---static
+|   |   +---css
+|   |   |       style.css
+|   |   |
+|   |   +---data
+|   |   |       games.json
+|   |   |
+|   |   +---img
+|   |   |       testBar.png
+|   |   |
+|   |   \---js
+|   |           script.js
+|   |
+|   +---templates
+|   |       index.html
+|   |
++---code
+|   +---csv_data
+|   |       clean_vgsales.csv
+|   |
+|   +---ipynb
+|   |       json_formatting.ipynb
+|   |
+|   \---scraper
+|           scrape.py
+|           scraper.ipynb
+|
+\---sql
+        -- SQL_games_data.sql
+        sql_connection.ipynb
+
 ```
