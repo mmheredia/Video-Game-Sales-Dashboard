@@ -78,7 +78,55 @@ function pieChart() {}
 
 /////// LINE GRAPH FUNCTION ////////
 
-function lineChart() {}
+function lineChart() {
+  d3.json('../static/data/games_sorted.json').then((json_sorted) => {
+    let sorted_data = json_sorted
+
+    // Grab specific variables
+    let sampleGlobalSales = []
+    let sampleNASales = []
+    let sampleEUSales = []
+    let sampleJPSales = []
+    let sampleYear = []
+
+    // Loop through 50
+    for (let i = 0; i <= 49; i++) {
+      sampleGlobalSales.push(sorted_data[i].global_sales)
+      sampleNASales.push(sorted_data[i].na_sales)
+      sampleEUSales.push(sorted_data[i].eu_sales)
+      sampleJPSales.push(sorted_data[i].jp_sales)
+      sampleYear.push(sorted_data[i].year)
+    }
+
+    var GLOBAL = {
+      x: sampleYear,
+      y: sampleGlobalSales,
+      type: 'scatter',
+    }
+
+    var NA = {
+      x: sampleYear,
+      y: sampleNASales,
+      type: 'scatter',
+    }
+
+    var EU = {
+      x: sampleYear,
+      y: sampleEUSales,
+      type: 'scatter',
+    }
+
+    var JP = {
+      x: sampleYear,
+      y: sampleJPSales,
+      type: 'scatter',
+    }
+
+    var salesData = [GLOBAL, NA, EU, JP]
+
+    Plotly.newPlot('line', salesData)
+  })
+}
 
 /////// CAROUSEL FUNCTION ////////
 
