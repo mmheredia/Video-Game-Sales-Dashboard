@@ -97,14 +97,38 @@ function lineChart() {
     sampleEUSales.push(sorted_data[i].eu_sales)
     sampleJPSales.push(sorted_data[i].jp_sales)
     sampleYear.push(sorted_data[i].year)
-  }
+  };
 
-  var lineChart = anychart.data.set(lineChart())
+  var GLOBAL = {
+    x: sampleYear,
+    y: sampleGlobalSales,
+    type: 'scatter'
+  };
 
-  
-  
-  })
-  }
+  var NA = {
+    x: sampleYear,
+    y: sampleNASales,
+    type: 'scatter'
+  };
+
+  var EU = {
+    x: sampleYear,
+    y: sampleEUSales,
+    type: 'scatter'
+  };
+
+  var JP = {
+    x: sampleYear,
+    y: sampleJPSales,
+    type: 'scatter'
+  };
+
+  var salesData = [GLOBAL, NA, EU, JP];
+
+  Plotly.newPlot('line', salesData);
+
+  });
+};
 
 /////// CAROUSEL FUNCTION ////////
 
