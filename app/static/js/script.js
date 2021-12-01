@@ -5,6 +5,12 @@ function init() {
   pieChart()
   lineChart()
   carousel()
+  // Dropdown menu event handler ID
+  const selector = d3.select('#selDataset');
+  // Populate dropdown menu option
+  d3.json('static/data/games.json').then((json_data) => {
+    let sampleYears = data.years
+  })
 }
 
 /////// BAR CHART FUNCTION ////////
@@ -20,6 +26,7 @@ function barChart() {
     let sampleNames = []
     let sampleSales = []
     let samplePublishers = []
+    let sampleYears = []
     let sampleGenre = []
     let samplePlatform = []
     // Loop through 100
@@ -96,19 +103,29 @@ d3.json('static/data/games.json').then((json_data) => {
     values: sampleRank,
     labels: pieValues,
     type: 'pie',
+    hole: 0.4,
+    textinfo: 'label+percent',
+    textposition: 'outside',
+    automargin: true,
+    plot_bgcolor:"black",
+    paper_bgcolor:"#0d0d0d",
     marker: {
       colors: ['#002047','#084081', '#0868ac', '#2b8cbe', '#4eb3d3', '#7bccc4', '#a8ddb5', '#ccebc5', '#e0f3db' ,'#f7fcf0']
     }
   }]
   
   let pieLayout = {
+    height: 400,
+    width: 800,
+    margin: {"t": 90, "b": 50, "l": 0, "r": 0},
+    
     title: {
-      text: 'Pie Chart'
+      text: 'Top Played Genres'
     },
     showlegend: true
   }
 
-  Plotly.newplot('pie', pieData, pieLayout)
+  Plotly.newPlot('pie', pieData, pieLayout)
 
  })
   console.log('GLHF')
