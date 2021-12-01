@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@300&display=swap');
 
+/* BODY STYLING */
+
 body {
-  background-color: #111111;
+  background-color: #111111 !important;
   color: white !important;
   font-family: 'Roboto', sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
+
+/* CONTAINER STYLING */
 
 .container {
   width: 100%;
@@ -16,11 +20,8 @@ body {
   align-items: center;
 }
 
-#bar {
-  justify-content: center;
-  align-items: center;
-  padding-left: 80px;
-}
+
+/* NAVBAR STYLING */
 
 nav {
   background-color: #222222;
@@ -29,6 +30,15 @@ nav {
   padding-top: 3px;
   width: 100%;
 }
+
+/* NAVBAR HEADER ICON STYLING */
+
+i {
+  color: yellow;
+  padding-right: 10px;
+}
+
+/* NAVBAR HEADER TEXT STYLING */
 
 a {
   color: white;
@@ -39,6 +49,33 @@ a:hover {
   text-decoration: none;
 }
 
+/* DROPDOWN STYLING */
+
+#selDataset {
+  color: black;
+}
+div .well {
+  border: 0px;
+  border-radius: 0px;
+  margin-bottom: 5rem;
+  background-color: black;
+  color: white;
+  border: 3px solid white;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+/* SIMILAR GRAPH STYLING */
+
+#pie,
+#line {
+  margin-top: 40px;
+}
+
+/* FOOTER STYLING */
+
+footer {
+  text-align: center;
 i {
   color: yellow;
   padding-right: 10px;
@@ -49,10 +86,6 @@ i {
   background-color: black;
   color: white;
   font-family: 'Open Sans', sans-serif;
-}
-.sample-metadata,
-#sample-metadata,
-.panel-heading {
   margin: -1px;
 }
 
