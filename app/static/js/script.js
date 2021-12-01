@@ -98,6 +98,10 @@ function lineChart() {
     sampleJPSales.push(sorted_data[i].jp_sales)
     sampleYear.push(sorted_data[i].year)
   }
+
+  var lineChart = anychart.data.set(lineChart())
+
+  
   
   })
   }
