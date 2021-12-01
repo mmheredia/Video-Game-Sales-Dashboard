@@ -1,17 +1,21 @@
-/////// INIT FUNCTION ////////
-
 function init() {
   barChart()
   pieChart()
   lineChart()
   carousel()
+  // Dropdown menu event handler ID
+  const selector = d3.select('#selDataset')
+  // Populate dropdown menu option
+  d3.json('static/data/games.json').then((json_data) => {
+    let sampleYears = data.years
+  })
 }
 
 /////// BAR CHART FUNCTION ////////
 
 function barChart() {
   // Read in data with JSON
-  d3.json('static/data/games.json').then((json_data) => {
+  d3.json('/data').then((json_data) => {
     // Grab json data
     let data = json_data
     // Grab specific variables
@@ -74,14 +78,73 @@ function barChart() {
 
 /////// PIE CHART FUNCTION ////////
 
-function pieChart() {}
+function pieChart() {
+  // Read in data with JSON
+  d3.json('static/data/games.json').then((json_data) => {
+    // Grab json data
+    let data = json_data
+    let sampleGenre = []
+    let sampleRank = []
+    // Loop through 100
+    for (let i = 0; i <= 49; i++) {
+      sampleGenre.push(data[i].genre)
+      sampleRank.push(data[i].rank)
+    }
+    // Setting Values for pie chart
+    let pieValues = sampleGenre.slice(0, 10)
+    // Setting Data points
+    let pieData = [
+      {
+        values: sampleRank,
+        labels: pieValues,
+        type: 'pie',
+        hole: 0.4,
+        textinfo: 'label+percent',
+        textposition: 'outside',
+        automargin: true,
+        plot_bgcolor: 'black',
+        paper_bgcolor: '#0d0d0d',
+        marker: {
+          colors: [
+            '#002047',
+            '#084081',
+            '#0868ac',
+            '#2b8cbe',
+            '#4eb3d3',
+            '#7bccc4',
+            '#a8ddb5',
+            '#ccebc5',
+            '#e0f3db',
+            '#f7fcf0',
+          ],
+        },
+      },
+    ]
 
+    let pieLayout = {
+      height: 400,
+      width: 600,
+      margin: { t: 90, b: 50, l: 0, r: 0, pad: 4 },
+      title: {
+        text: 'Top Played Genres',
+      },
+      showlegend: true,
+      plot_bgcolor: 'black',
+      paper_bgcolor: '#0d0d0d',
+      font: {
+        color: 'white',
+        family: 'Roboto, san-serif',
+      },
+    }
+
+    Plotly.newPlot('pie', pieData, pieLayout)
+  })
+}
 /////// LINE GRAPH FUNCTION ////////
 
 function lineChart() {
   d3.json('../static/data/games_sorted.json').then((json_sorted) => {
     let sorted_data = json_sorted
-
     // Grab specific variables
     let sampleGlobalSales = []
     let sampleNASales = []
@@ -124,7 +187,25 @@ function lineChart() {
 
     var salesData = [GLOBAL, NA, EU, JP]
 
-    Plotly.newPlot('line', salesData)
+    var lineLayout = {
+      height: 400,
+      width: 600,
+      title: {
+        text: 'Regional Sales',
+      },
+      // showlegend: true,
+      plot_bgcolor: 'black',
+      paper_bgcolor: '#0d0d0d',
+      font: {
+        color: 'white',
+        family: 'Roboto, san-serif',
+      },
+      margin: {
+        pad: 2,
+      },
+    }
+
+    Plotly.newPlot('line', salesData, lineLayout)
   })
 }
 
