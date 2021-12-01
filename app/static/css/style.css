@@ -76,31 +76,6 @@ div .well {
 
 footer {
   text-align: center;
-i {
-  color: yellow;
-  padding-right: 10px;
-}
-
-.sample-metadata,
-#sample-metadata {
-  background-color: black;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
-  margin: -1px;
-}
-
-div .well {
-  border: 0px;
-  border-radius: 0px;
-  margin-bottom: 5rem;
-  background-color: black;
-  color: white;
-  border: 3px solid white;
-  border-radius: 5px;
-}
-
-footer {
-  text-align: center;
   padding-top: 10rem;
   margin-top: auto;
   color: maroon;
