@@ -146,40 +146,46 @@ function pieChart() {
 
 function lineChart() {
 
-    let sampleGlobalSales = [1200.40, 1031.48, 726.50, 674.16, 528.52, 141.68]
+    let sampleYears = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020]
     let sampleNASales = [608.48, 482.00, 309.86, 309.54, 263.94, 205.64, 45.32, 0.00, 0.54]
     let sampleEUSales = [353.14, 334.62, 237.52, 251.60, 254.26, 195.42, 53.52, 0.00, 0.00]
     let sampleJPSales = [118.98, 106.08, 95.18, 78.92, 67.44, 27.34, 0.10, 0.00]
     let sampleOtherSales = [119.80, 108.78, 75.64, 79.64, 80.04, 60.02, 15.50, 0.00, 0.04]
+    let sampleGlobalSales = [1200.40, 1031.48, 726.50, 674.16, 528.52, 141.68]
 
     var GLOBAL = {
-      x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020],
+      x: sampleYears,
       y: sampleGlobalSales,
       type: 'scatter',
+      name: 'Global',
     }
 
     var NA = {
-      x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020],
+      x: sampleYears,
       y: sampleNASales,
       type: 'scatter',
+      name: 'NA America Sales',
     }
 
     var EU = {
-      x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020],
+      x: sampleYears,
       y: sampleEUSales,
       type: 'scatter',
+      name: 'EU Sales',
     }
 
     var JP = {
-      x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020],
+      x: sampleYears,
       y: sampleJPSales,
       type: 'scatter',
+      name: 'JP Sales',
     }
 
     var OTHER = {
-      x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020],
+      x: sampleYears,
       y: sampleOtherSales,
       type: 'scatter',
+      name: 'Other',
     }
 
     var salesData = [GLOBAL, NA, EU, JP, OTHER]
@@ -203,7 +209,6 @@ function lineChart() {
     }
 
     Plotly.newPlot('line', salesData, lineLayout)
-  })
 }
 
 /////// CAROUSEL FUNCTION ////////
