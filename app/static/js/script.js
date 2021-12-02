@@ -143,8 +143,8 @@ function pieChart() {
 /////// LINE GRAPH FUNCTION ////////
 
 function lineChart() {
-  d3.json('../static/data/games_sorted.json').then((json_sorted) => {
-    let sorted_data = json_sorted
+  d3.json('../json/salesByYear.json').then((json_years) => {
+    let year_data = json_years
     // Grab specific variables
     let sampleGlobalSales = []
     let sampleNASales = []
@@ -153,12 +153,12 @@ function lineChart() {
     let sampleYear = []
 
     // Loop through 50
-    for (let i = 0; i <= 49; i++) {
-      sampleGlobalSales.push(sorted_data[i].global_sales)
-      sampleNASales.push(sorted_data[i].na_sales)
-      sampleEUSales.push(sorted_data[i].eu_sales)
-      sampleJPSales.push(sorted_data[i].jp_sales)
-      sampleYear.push(sorted_data[i].year)
+    for (let i = 0; i <= 4; i++) {
+      sampleGlobalSales.push(year_data[i].global_sales)
+      sampleNASales.push(year_data[i].na_sales)
+      sampleEUSales.push(year_data[i].eu_sales)
+      sampleJPSales.push(year_data[i].jp_sales)
+      sampleYear.push(year_data[i].year)
     }
 
     var GLOBAL = {
@@ -191,7 +191,7 @@ function lineChart() {
       height: 400,
       width: 600,
       title: {
-        text: 'Regional Sales',
+        text: 'Sales by Region',
       },
       // showlegend: true,
       plot_bgcolor: 'black',

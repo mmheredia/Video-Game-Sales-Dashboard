@@ -4,7 +4,6 @@
 DROP TABLE games_data;
 
 CREATE TABLE games_data(
-	game_id SERIAL PRIMARY KEY,
 	rank INT,
 	name TEXT,
 	platform TEXT,
@@ -17,3 +16,11 @@ CREATE TABLE games_data(
 	other_sales FLOAT,
 	global_sales FLOAT
 );
+
+SELECT * FROM games_data;
+
+CREATE TABLE year_data AS
+SELECT year, na_sales, eu_sales, jp_sales, global_sales
+FROM games_data;
+
+SELECT * FROM year_data;
