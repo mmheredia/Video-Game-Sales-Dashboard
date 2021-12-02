@@ -18,7 +18,7 @@ def index():
 
 @app.route("/static/js/script.js")
 def get_static(filename):
-    with open(f'static/js/{filename}') as f:
+    with open(f'static/js/{script.js}') as f:
         return f.read()
 
 
