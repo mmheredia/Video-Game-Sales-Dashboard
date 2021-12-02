@@ -14,6 +14,8 @@ function init() {
 /////// BAR CHART FUNCTION ////////
 
 function barChart() {
+
+  console.log('barchart test');
   // Read in data with JSON
   d3.json('/data').then((json_data) => {
     // Grab json data
@@ -143,49 +145,44 @@ function pieChart() {
 /////// LINE GRAPH FUNCTION ////////
 
 function lineChart() {
-  d3.json('../json/salesByYear.json').then((json_years) => {
-    let year_data = json_years
-    // Grab specific variables
-    let sampleGlobalSales = []
-    let sampleNASales = []
-    let sampleEUSales = []
-    let sampleJPSales = []
-    let sampleYear = []
 
-    // Loop through 50
-    for (let i = 0; i <= 4; i++) {
-      sampleGlobalSales.push(year_data[i].global_sales)
-      sampleNASales.push(year_data[i].na_sales)
-      sampleEUSales.push(year_data[i].eu_sales)
-      sampleJPSales.push(year_data[i].jp_sales)
-      sampleYear.push(year_data[i].year)
-    }
+    let sampleGlobalSales = [1200.40, 1031.48, 726.50, 674.16, 528.52, 141.68]
+    let sampleNASales = [608.48, 482.00, 309.86, 309.54, 263.94, 205.64, 45.32, 0.00, 0.54]
+    let sampleEUSales = [353.14, 334.62, 237.52, 251.60, 254.26, 195.42, 53.52, 0.00, 0.00]
+    let sampleJPSales = [118.98, 106.08, 95.18, 78.92, 67.44, 27.34, 0.10, 0.00]
+    let sampleOtherSales = [119.80, 108.78, 75.64, 79.64, 80.04, 60.02, 15.50, 0.00, 0.04]
 
     var GLOBAL = {
-      x: sampleYear,
+      x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020],
       y: sampleGlobalSales,
       type: 'scatter',
     }
 
     var NA = {
-      x: sampleYear,
+      x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020],
       y: sampleNASales,
       type: 'scatter',
     }
 
     var EU = {
-      x: sampleYear,
+      x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020],
       y: sampleEUSales,
       type: 'scatter',
     }
 
     var JP = {
-      x: sampleYear,
+      x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020],
       y: sampleJPSales,
       type: 'scatter',
     }
 
-    var salesData = [GLOBAL, NA, EU, JP]
+    var OTHER = {
+      x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020],
+      y: sampleOtherSales,
+      type: 'scatter',
+    }
+
+    var salesData = [GLOBAL, NA, EU, JP, OTHER]
 
     var lineLayout = {
       height: 400,
