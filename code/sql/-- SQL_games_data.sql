@@ -1,3 +1,6 @@
+-- SQL_games_data
+-- Creating the table for our SQL database.
+
 DROP TABLE games_data;
 
 CREATE TABLE games_data(
@@ -22,9 +25,11 @@ DROP TABLE year_data;
 CREATE TABLE year_data AS
 	SELECT year, na_sales, eu_sales, jp_sales, other_sales, global_sales
 	FROM games_data;
+	
+SELECT * FROM year_data;
 
 SELECT * FROM year_data
-ORDER BY year DESC;
+	ORDER BY year DESC;
 
 SELECT DISTINCT year
 FROM year_data
@@ -105,6 +110,7 @@ SELECT * FROM data_2020;
 DROP TABLE sales_data;
 
 CREATE TABLE sales_data (
+	game_id SERIAL PRIMARY KEY,
 	year INT,
 	na_sales FLOAT, 
 	eu_sales FLOAT,
@@ -114,15 +120,15 @@ CREATE TABLE sales_data (
 );
 
 INSERT INTO sales_data (year, na_sales, eu_sales, jp_sales, other_sales, global_sales)
-VALUES 
-	(2010, 608.48, 353.14, 118.98, 119.80, 1200.40),
-	(2011, 482.00, 334.62, 106.08, 108.78, 1031.48),
-	(2012, 309.86, 237.52, 103.48, 75.64, 726.50),
-	(2013, 309.54, 251.60, 95.18, 79.64, 735.96),
-	(2014, 263.94, 254.26, 78.92, 80.04, 674.16),
-	(2015, 205.64, 195.42, 67.44, 60.02, 528.52),
-	(2016, 45.32, 53.52, 27.34,	15.50, 141.68),
-	(2017, 0.00, 0.00, 0.10, 0.00, 0.10),
-	(2020, 0.54, 0.00, 0.00, 0.04, 0.58);
+VALUES 	
+	(2010, 4078.16, 2271.56, 1218.38, 754.03, 8322.13),
+	(2011, 3962.42, 2204.82, 1176.22, 725.98, 8069.44),
+	(2012, 3926.81, 2181.87, 1168.1, 719.84, 7996.62),
+	(2013, 4063.07, 2266.57, 1218.07, 752.36, 8300.07),
+	(2014, 3864.53, 2140.42, 1155.25, 706.16, 7866.36),
+	(2015, 3932.57, 2187.68, 1168.45, 722.15, 8010.85),
+	(2016, 3299.08, 1770.88, 989.78, 591.21, 6650.95),
+	(2017, 1010.01, 1900.65, 563.09, 350.39, 3825.14),
+	(2020, 535.16, 223.95, 260.21, 71.71, 1091.03);
 	
 SELECT * FROM sales_data;
