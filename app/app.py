@@ -9,14 +9,12 @@ from sqlalchemy.ext.automap import automap_base
 app = Flask(__name__)
 
 # Route Section
-
-
 @app.route('/')
 def index():
-    return render_template("index.html")
+    with open('templates/index.html') as f:
+        return f.read()
 
-
-@app.route("/static/js/script.js")
+@app.route("/static/js/<filename>")
 def get_static(filename):
     with open(f'static/js/{filename}') as f:
         return f.read()
@@ -32,12 +30,12 @@ def datafinder():
 
     Base = automap_base()
     Base.prepare(engine, reflect=True)
-    Gamedata = Base.classes.games_data
+    gamedata = Base.classes.games_data
 
     session = Session(engine)
-    query = session.query(Gamedata.rank, Gamedata.name, Gamedata.platform, Gamedata.year,
-                          Gamedata.genre, Gamedata.publisher, Gamedata.na_sales, Gamedata.eu_sales, Gamedata.jp_sales,
-                          Gamedata.other_sales, Gamedata.global_sales)
+    query = session.query(gamedata.rank, gamedata.name, gamedata.platform, gamedata.year,
+                          gamedata.genre, gamedata.publisher, gamedata.na_sales, gamedata.eu_sales, gamedata.jp_sales,
+                          gamedata.other_sales, gamedata.global_sales)
 
     data = query.all()
 
