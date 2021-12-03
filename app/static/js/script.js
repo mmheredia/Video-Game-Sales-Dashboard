@@ -14,6 +14,8 @@ function init() {
 /////// BAR CHART FUNCTION ////////
 
 function barChart() {
+
+  console.log('barchart test');
   // Read in data with JSON
   d3.json('/data').then((json_data) => {
     // Grab json data
@@ -143,55 +145,56 @@ function pieChart() {
 /////// LINE GRAPH FUNCTION ////////
 
 function lineChart() {
-  d3.json('../static/data/games_sorted.json').then((json_sorted) => {
-    let sorted_data = json_sorted
-    // Grab specific variables
-    let sampleGlobalSales = []
-    let sampleNASales = []
-    let sampleEUSales = []
-    let sampleJPSales = []
-    let sampleYear = []
 
-    // Loop through 50
-    for (let i = 0; i <= 49; i++) {
-      sampleGlobalSales.push(sorted_data[i].global_sales)
-      sampleNASales.push(sorted_data[i].na_sales)
-      sampleEUSales.push(sorted_data[i].eu_sales)
-      sampleJPSales.push(sorted_data[i].jp_sales)
-      sampleYear.push(sorted_data[i].year)
-    }
+    let sampleYears = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020]
+    let sampleNASales = [608.48, 482.00, 309.86, 309.54, 263.94, 205.64, 45.32, 0.00, 0.54]
+    let sampleEUSales = [353.14, 334.62, 237.52, 251.60, 254.26, 195.42, 53.52, 0.00, 0.00]
+    let sampleJPSales = [118.98, 106.08, 95.18, 78.92, 67.44, 27.34, 0.10, 0.00]
+    let sampleOtherSales = [119.80, 108.78, 75.64, 79.64, 80.04, 60.02, 15.50, 0.00, 0.04]
+    let sampleGlobalSales = [1200.40, 1031.48, 726.50, 674.16, 528.52, 141.68]
 
     var GLOBAL = {
-      x: sampleYear,
+      x: sampleYears,
       y: sampleGlobalSales,
       type: 'scatter',
+      name: 'Global',
     }
 
     var NA = {
-      x: sampleYear,
+      x: sampleYears,
       y: sampleNASales,
       type: 'scatter',
+      name: 'NA America Sales',
     }
 
     var EU = {
-      x: sampleYear,
+      x: sampleYears,
       y: sampleEUSales,
       type: 'scatter',
+      name: 'EU Sales',
     }
 
     var JP = {
-      x: sampleYear,
+      x: sampleYears,
       y: sampleJPSales,
       type: 'scatter',
+      name: 'JP Sales',
     }
 
-    var salesData = [GLOBAL, NA, EU, JP]
+    var OTHER = {
+      x: sampleYears,
+      y: sampleOtherSales,
+      type: 'scatter',
+      name: 'Other',
+    }
+
+    var salesData = [GLOBAL, NA, EU, JP, OTHER]
 
     var lineLayout = {
       height: 400,
       width: 600,
       title: {
-        text: 'Regional Sales',
+        text: 'Sales by Region',
       },
       // showlegend: true,
       plot_bgcolor: 'black',
@@ -206,7 +209,6 @@ function lineChart() {
     }
 
     Plotly.newPlot('line', salesData, lineLayout)
-  })
 }
 
 /////// CAROUSEL FUNCTION ////////
