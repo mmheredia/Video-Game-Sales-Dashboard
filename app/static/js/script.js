@@ -1,15 +1,9 @@
 function init() {
+  carousel()
   let firstRegion = "na_sales"
   barChart(firstRegion)
   pieChart(firstRegion)
   lineChart()
-  carousel()
-  // Dropdown menu event handler ID
-  //const selector = d3.select('#selDataset')
-  // Populate dropdown menu option
-  //d3.json('static/data/games.json').then((json_data) => {
-    //let sampleYears = data.years
-  //})
 }
 
 /////// BAR CHART FUNCTION ////////
@@ -260,9 +254,21 @@ function optionChanged(newRegion) {
 /////// CAROUSEL FUNCTION ////////
 
 function carousel() {
-  $(document).ready(function(){
-    $(".owl-carousel").owlCarousel();
+  var owl = $('.owl-carousel');
+  owl.owlCarousel({
+      items:4,
+      loop:true,
+      margin:15,
+      autoplay:true,
+      autoplayTimeout:2000,
+      autoplayHoverPause:true
   });
+  $('.play').on('click',function(){
+      owl.trigger('play.owl.autoplay',[2000])
+  })
+  $('.stop').on('click',function(){
+      owl.trigger('stop.owl.autoplay')
+  })
 }
 /////// INITIALIZING ALL FUNCTIONS TO RUN ////////
 
