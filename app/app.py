@@ -54,7 +54,7 @@ def get_static(filename):
 @app.route('/data')
 def datafinder():
     username = "postgres"
-    password = "1313"
+    password = "postgres"
 
     rds_connection_string = f"{username}:{password}@localhost:5432/VideoGamesProject"
     engine = create_engine(f'postgresql://{rds_connection_string}')
@@ -93,7 +93,7 @@ def datafinder():
 @app.route('/linedata')
 def linefinder():
     username = "postgres"
-    password = "1313"
+    password = "postgres"
 
     rds_connection_string = f"{username}:{password}@localhost:5432/VideoGamesProject"
     engine = create_engine(f'postgresql://{rds_connection_string}')
