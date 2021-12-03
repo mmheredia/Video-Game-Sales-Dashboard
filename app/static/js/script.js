@@ -28,7 +28,7 @@ function barChart(region) {
     let sampleGenre = []
     let samplePlatform = []
     var regionName = ''
-    // Loop through 100
+    // Loop through 50
     for (let i = 0; i <= 49; i++) {
       sampleData.push(data[i])
       sampleRank.push(data[i].rank)
@@ -55,7 +55,7 @@ function barChart(region) {
     }
     let xticks = sampleRank
       .map((x) => +x)
-      .slice(0, 100)
+      .slice(0, 50)
       .reverse()
     let barData = [
       {
@@ -66,7 +66,58 @@ function barChart(region) {
         type: 'bar',
         hoverinfo: sampleNames.slice(0, 100).reverse(),
         marker: {
-          color: 'maroon',
+          color: [
+            '#274472',
+            '#41729F',
+            '#665191',
+            '#a05195',
+            '#d45087',
+            '#f95d6a',
+            '#DF362D',
+            '#ff7c43',
+            '#ffa600',
+            '#ECF87F',
+            '#274472',
+            '#41729F',
+            '#665191',
+            '#a05195',
+            '#d45087',
+            '#f95d6a',
+            '#DF362D',
+            '#ff7c43',
+            '#ffa600',
+            '#ECF87F',
+            '#274472',
+            '#41729F',
+            '#665191',
+            '#a05195',
+            '#d45087',
+            '#f95d6a',
+            '#DF362D',
+            '#ff7c43',
+            '#ffa600',
+            '#ECF87F',
+            '#274472',
+            '#41729F',
+            '#665191',
+            '#a05195',
+            '#d45087',
+            '#f95d6a',
+            '#DF362D',
+            '#ff7c43',
+            '#ffa600',
+            '#ECF87F',
+            '#274472',
+            '#41729F',
+            '#665191',
+            '#a05195',
+            '#d45087',
+            '#f95d6a',
+            '#DF362D',
+            '#ff7c43',
+            '#ffa600',
+            '#ECF87F',
+          ],
         },
       },
     ]
@@ -75,7 +126,7 @@ function barChart(region) {
       height: 400,
       title: `${regionName} Sales Data`,
       xaxis: { title: 'Game Rank' },
-      yaxis: { title: `{regionName} Sales ($)` },
+      yaxis: { title: `${regionName} Sales ($)` },
       hovermode: sampleNames,
       plot_bgcolor: 'black',
       paper_bgcolor: '#0d0d0d',
@@ -83,11 +134,6 @@ function barChart(region) {
         color: 'white',
         family: 'Roboto, san-serif',
       },
-      margin: {
-        pad: 4,
-      },
-      automargin: true,
-      autosize: false,
     }
     Plotly.newPlot('bar', barData, barLayout)
   })
@@ -122,16 +168,16 @@ function pieChart() {
         paper_bgcolor: '#0d0d0d',
         marker: {
           colors: [
-            '#002047',
-            '#084081',
-            '#0868ac',
-            '#2b8cbe',
-            '#4eb3d3',
-            '#7bccc4',
-            '#a8ddb5',
-            '#ccebc5',
-            '#e0f3db',
-            '#f7fcf0',
+            '#274472',
+            '#41729F',
+            '#665191',
+            '#a05195',
+            '#d45087',
+            '#f95d6a',
+            '#DF362D',
+            '#ff7c43',
+            '#ffa600',
+            '#ECF87F',
           ],
         },
       },
@@ -159,81 +205,101 @@ function pieChart() {
 /////// LINE GRAPH FUNCTION ////////
 
 function lineChart() {
-  let sampleYears = [
-    2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020,
-  ]
-  let sampleNASales = [
-    608.48, 482.0, 309.86, 309.54, 263.94, 205.64, 45.32, 0.0, 0.54,
-  ]
-  let sampleEUSales = [
-    353.14, 334.62, 237.52, 251.6, 254.26, 195.42, 53.52, 0.0, 0.0,
-  ]
-  let sampleJPSales = [
-    118.98, 106.08, 95.18, 78.92, 67.44, 27.34, 0.1, 0.0,
-  ]
-  let sampleOtherSales = [
-    119.8, 108.78, 75.64, 79.64, 80.04, 60.02, 15.5, 0.0, 0.04,
-  ]
-  let sampleGlobalSales = [
-    1200.4, 1031.48, 726.5, 674.16, 528.52, 141.68,
-  ]
+  d3.json('/linedata').then((json_data) => {
+    let data = json_data
 
-  var GLOBAL = {
-    x: sampleYears,
-    y: sampleGlobalSales,
-    type: 'scatter',
-    name: 'Global',
-  }
+    let sampleYear = []
+    let sampleNASales = []
+    let sampleEUSales = []
+    let sampleJPSales = []
+    let sampleOtherSales = []
+    let sampleGlobalSales = []
+    let sampleSales = []
+    let regionName = ''
 
-  var NA = {
-    x: sampleYears,
-    y: sampleNASales,
-    type: 'scatter',
-    name: 'NA America Sales',
-  }
+    for (let i = 0; i <= 8; i++) {
+      sampleYear.push(data[i].year)
+      sampleNASales.push(data[i].na_sales)
+      sampleEUSales.push(data[i].eu_sales)
+      sampleJPSales.push(data[i].jp_sales)
+      sampleOtherSales.push(data[i].other_sales)
+      sampleGlobalSales.push(data[i].global_sales)
+    }
 
-  var EU = {
-    x: sampleYears,
-    y: sampleEUSales,
-    type: 'scatter',
-    name: 'EU Sales',
-  }
+    var trace1 = {
+      x: sampleYear,
+      y: sampleNASales,
+      type: 'scatter',
+      name: 'NA Sales',
+      marker: {
+        color: '#ffa600',
+      },
+    }
 
-  var JP = {
-    x: sampleYears,
-    y: sampleJPSales,
-    type: 'scatter',
-    name: 'JP Sales',
-  }
+    var trace2 = {
+      x: sampleYear,
+      y: sampleEUSales,
+      type: 'scatter',
+      name: 'EU Sales',
+      marker: {
+        color: '#274472',
+      },
+    }
 
-  var OTHER = {
-    x: sampleYears,
-    y: sampleOtherSales,
-    type: 'scatter',
-    name: 'Other',
-  }
+    var trace3 = {
+      x: sampleYear,
+      y: sampleJPSales,
+      type: 'scatter',
+      name: 'JP Sales',
+      marker: {
+        color: '#d45087',
+      },
+    }
 
-  var salesData = [GLOBAL, NA, EU, JP, OTHER]
+    var trace4 = {
+      x: sampleYear,
+      y: sampleOtherSales,
+      type: 'scatter',
+      name: 'Other Sales',
+      marker: {
+        color: '#DF362D',
+      },
+    }
 
-  var lineLayout = {
-    height: 400,
-    width: 600,
-    title: {
-      text: 'Sales by Region',
-    },
-    // showlegend: true,
-    plot_bgcolor: 'black',
-    paper_bgcolor: '#0d0d0d',
-    font: {
-      color: 'white',
-      family: 'Roboto, san-serif',
-    },
-    margin: {
-      pad: 2,
-    },
-  }
+    var trace5 = {
+      x: sampleYear,
+      y: sampleGlobalSales,
+      type: 'scatter',
+      name: 'Global Sales',
+      marker: {
+        color: '#ECF87F',
+      },
+    }
 
-  Plotly.newPlot('line', salesData, lineLayout)
+    let lineData = [trace1, trace2, trace3, trace4, trace5]
+
+    let lineLayout = {
+      width: 600,
+      height: 400,
+      title: `${regionName} Sales Data`,
+      xaxis: { title: 'Year' },
+      yaxis: { title: `${regionName} Sales Data ($)` },
+      hovermode: sampleSales,
+      plot_bgcolor: 'black',
+      paper_bgcolor: '#0d0d0d',
+      showlegend: true,
+      font: {
+        color: 'white',
+        family: 'Roboto, san-serif',
+      },
+      margin: {
+        pad: 4,
+      },
+      automargin: true,
+      autosize: false,
+    }
+    Plotly.newPlot('line', lineData, lineLayout)
+  })
 }
 
 /////// DROPDOWN FUNCTION ////////

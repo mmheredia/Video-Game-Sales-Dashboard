@@ -1,94 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <link rel="icon" href="../static/img/chart.svg" />
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="../static/css/owl.carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="../static/css/owl.theme.default.min.css"
-    />
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <title>Video Game Dashboard</title>
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="row">
-        <nav class="navbar">
-          <a class="navbar-head" href="/"
-            ><i class="fas fa-gamepad"></i> DASHBOARD</a
-          >
-        </nav>
-      </div>
-      <div class="row-fluid">
-        <div class="col-md-12">
-          <div class="owl-carousel owl-theme">
-            <div>
-              Gaming accounts for 21% of our respondents’
-              entertainment leisure time in the U.S.—only slightly
-              behind broadcast television.
-            </div>
-            <div>
-              The U.S. is one of the biggest games markets in the
-              world. Last year, there were 190 million gamers in the
-              U.S. who generated game revenues of $42.1 billion.
-            </div>
-            <div>
-              The number of gamers who say they are playing video
-              games more now due to the COVID-19 pandemic increased
-              between March 23 – June 3rd 2020 by 46% in the U.S.,
-              followed by 41% in France, 28% in the U.K. and 23% in
-              Germany.
-            </div>
-            <div>
-              In 2018 an estimated 66% of the general population in
-              the USA were gamers.
-            </div>
-            <div>
-              Japan’s market has more than 70 million gaming players.
-              The value of the gaming market in Japan is expected to
-              reach JPY 1.55 trillion in 2024 from JPY 1.4 trillion in
-              2017.
-            </div>
-            <div>
-              Gaming is the most lucrative entertainment industry by
-              far, worth $145.7b in 2019, compared to $42.5b in Box
-              Office earnings and $20.2b for Music.
-            </div>
-            <div>
-              36% of the gamers are from the Asia Pacific. (The
-              European Mobile Game Market, 2016)
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../static/img/chart.svg" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../static/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css" />
+  <link rel="stylesheet" href="../static/css/style.css" />
+  <title>Video Game Dashboard</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <nav class="navbar">
+        <h1 class="navbar-head"><i class="fas fa-gamepad"></i> DASHBOARD</h1>
+      </nav>
+    </div>
+    <div class="row-fluid">
+      <div class="col-lg-12">
+        <div class="owl-carousel owl-theme">
+          {% for item in quotes %}
+          <div class="item">
+            <h4>{{item}}</h4>
           </div>
+          {% endfor %}
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-lg-2">
           <div class="well">
             <h5>Select A Sales Region:</h5>
-            <select
-              id="selDataset"
-              onchange="optionChanged(this.value)"
-            >
+            <select id="selDataset" onchange="optionChanged(this.value)">
               <option value="na_sales">North America</option>
               <option value="eu_sales">Europe</option>
               <option value="jp_sales">Japan</option>
@@ -97,7 +45,7 @@
             </select>
           </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-lg-8">
           <div id="bar"></div>
         </div>
       </div>
@@ -121,5 +69,6 @@
     <script src="static/js/jquery.min.js"></script>
     <script src="static/js/owl.carousel.min.js"></script>
     <script src="static/js/script.js"></script>
-  </body>
+</body>
+
 </html>

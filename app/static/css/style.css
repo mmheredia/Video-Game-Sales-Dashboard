@@ -16,8 +16,12 @@ body {
 .container {
   width: 100%;
   padding-bottom: 3rem;
+}
+
+/* ROW STYLING */
+
+.row {
   justify-content: center;
-  align-items: center;
 }
 
 /* NAVBAR STYLING */
@@ -30,38 +34,42 @@ nav {
   width: 100%;
 }
 
-/* NAVBAR HEADER ICON STYLING */
+/* NAVBAR HEADER STYLING */
 
 i {
   color: yellow;
   padding-right: 10px;
 }
 
-/* NAVBAR HEADER TEXT STYLING */
-
-a {
-  color: white;
-}
-
-a:hover {
-  color: yellow;
-  text-decoration: none;
+h1 {
+  font-weight: 600;
 }
 
 /* DROPDOWN STYLING */
 
 #selDataset {
   color: black;
+  font-weight: 600;
+  font-size: 15px;
 }
+
+.sample-metadata,
+#sample-metadata {
+  background-color: #0a0a0a;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  margin: -1px;
+}
+
 div .well {
   border: 0px;
   border-radius: 0px;
   margin-bottom: 5rem;
-  background-color: black;
+  background-color: #0a0a0a;
   color: white;
-  border: 3px solid white;
+  border: 2px solid white;
+  font-weight: 600;
   border-radius: 5px;
-  padding: 20px;
 }
 
 /* SIMILAR GRAPH STYLING */
@@ -72,34 +80,6 @@ div .well {
 }
 
 /* FOOTER STYLING */
-
-footer {
-  text-align: center;
-  color: red;
-}
-i {
-  color: yellow;
-  padding-right: 10px;
-}
-
-.sample-metadata,
-#sample-metadata {
-  background-color: black;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
-  margin: -1px;
-}
-
-div .well {
-  border: 0px;
-  border-radius: 0px;
-  margin-bottom: 5rem;
-  background-color: black;
-  color: white;
-  border: 3px solid white;
-  border-radius: 5px;
-}
-
 footer {
   text-align: center;
   padding-top: 10rem;
