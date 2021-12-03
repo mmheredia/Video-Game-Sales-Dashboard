@@ -1,19 +1,20 @@
 function init() {
-  barChart()
+  let firstRegion = 'na_sales'
+  barChart(firstRegion)
   pieChart()
   lineChart()
   carousel()
   // Dropdown menu event handler ID
-  const selector = d3.select('#selDataset')
+  //const selector = d3.select('#selDataset')
   // Populate dropdown menu option
-  d3.json('static/data/games.json').then((json_data) => {
-    let sampleYears = data.years
-  })
+  //d3.json('static/data/games.json').then((json_data) => {
+  //let sampleYears = data.years
+  //})
 }
 
 /////// BAR CHART FUNCTION ////////
 
-function barChart() {
+function barChart(region) {
   // Read in data with JSON
   d3.json('/data').then((json_data) => {
     // Grab json data
@@ -26,15 +27,31 @@ function barChart() {
     let samplePublishers = []
     let sampleGenre = []
     let samplePlatform = []
+    var regionName = ''
     // Loop through 100
     for (let i = 0; i <= 49; i++) {
       sampleData.push(data[i])
       sampleRank.push(data[i].rank)
       sampleNames.push(data[i].name)
-      sampleSales.push(data[i].global_sales)
       samplePublishers.push(data[i].publisher)
       sampleGenre.push(data[i].genre)
       samplePlatform.push(data[i].platform)
+      if (region == 'na_sales') {
+        sampleSales.push(data[i].na_sales)
+        regionName = 'North America'
+      } else if (region == 'eu_sales') {
+        sampleSales.push(data[i].eu_sales)
+        regionName = 'Europe'
+      } else if (region == 'jp_sales') {
+        sampleSales.push(data[i].jp_sales)
+        regionName = 'Japan'
+      } else if (region == 'other_sales') {
+        sampleSales.push(data[i].other_sales)
+        regionName = 'Other'
+      } else if (region == 'global_sales') {
+        sampleSales.push(data[i].global_sales)
+        regionName = 'Global'
+      }
     }
     let xticks = sampleRank
       .map((x) => +x)
@@ -56,9 +73,9 @@ function barChart() {
     let barLayout = {
       width: 800,
       height: 400,
-      title: 'Global Sales Data',
+      title: `${regionName} Sales Data`,
       xaxis: { title: 'Game Rank' },
-      yaxis: { title: 'Global Sales $' },
+      yaxis: { title: `{regionName} Sales ($)` },
       hovermode: sampleNames,
       plot_bgcolor: 'black',
       paper_bgcolor: '#0d0d0d',
@@ -79,8 +96,7 @@ function barChart() {
 /////// PIE CHART FUNCTION ////////
 
 function pieChart() {
-  // Read in data with JSON
-  d3.json('static/data/games.json').then((json_data) => {
+  d3.json('/data').then((json_data) => {
     // Grab json data
     let data = json_data
     let sampleGenre = []
@@ -220,10 +236,31 @@ function lineChart() {
   Plotly.newPlot('line', salesData, lineLayout)
 }
 
+/////// DROPDOWN FUNCTION ////////
+function optionChanged(newRegion) {
+  // Fetch new data each time a new sample is selected
+  barChart(newRegion)
+  pieChart(newRegion)
+}
 /////// CAROUSEL FUNCTION ////////
 
-function carousel() {}
-
+function carousel() {
+  var owl = $('.owl-carousel')
+  owl.owlCarousel({
+    items: 4,
+    loop: true,
+    margin: 15,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+  })
+  $('.play').on('click', function () {
+    owl.trigger('play.owl.autoplay', [2000])
+  })
+  $('.stop').on('click', function () {
+    owl.trigger('stop.owl.autoplay')
+  })
+}
 /////// INITIALIZING ALL FUNCTIONS TO RUN ////////
 
 init()
