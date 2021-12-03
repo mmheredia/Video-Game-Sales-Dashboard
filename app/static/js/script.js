@@ -79,7 +79,7 @@ function barChart(region) {
       height: 400,
       title: `${regionName} Sales Data`,
       xaxis: { title: 'Game Rank' },
-      yaxis: { title: `{regionName} Sales ($)` },
+      yaxis: { title: `${regionName} Sales ($)` },
       hovermode: sampleNames,
       plot_bgcolor: 'black',
       paper_bgcolor: '#0d0d0d',
@@ -230,10 +230,21 @@ function lineChart() {
   Plotly.newPlot('line', salesData, lineLayout)
 }
 
+/////// DROPDOWN FUNCTION ////////
+function optionChanged(newRegion) {
+  // Fetch new data each time a new sample is selected
+  barChart(newRegion)
+};
 /////// CAROUSEL FUNCTION ////////
 
-function carousel() {}
-
+function carousel() {
+  $(document).ready(function(){
+    $(".owl-carousel").owlCarousel();
+  });
+}
 /////// INITIALIZING ALL FUNCTIONS TO RUN ////////
+
+
+
 
 init()
