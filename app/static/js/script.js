@@ -15,7 +15,7 @@ function init() {
 /////// BAR CHART FUNCTION ////////
 
 function barChart(region) {
-  // Query the SQL Database for Data
+  // Read in data with JSON
   d3.json('/data').then((json_data) => {
     // Grab json data
     let data = json_data
@@ -81,8 +81,8 @@ function barChart(region) {
       xaxis: { title: 'Game Rank' },
       yaxis: { title: `${regionName} Sales ($)` },
       hovermode: sampleNames,
-      plot_bgcolor: '#111111',
-      paper_bgcolor: '#111111',
+      plot_bgcolor: 'black',
+      paper_bgcolor: '#0d0d0d',
       font: {
         color: 'white',
         family: 'Roboto, san-serif',
@@ -100,7 +100,7 @@ function barChart(region) {
 /////// PIE CHART FUNCTION ////////
 
 function pieChart(region) {
-  // Query the SQL Database for Data
+  // Read in data with JSON
   d3.json('/data').then((json_data) => {
     // Grab json data
     let data = json_data
@@ -145,7 +145,7 @@ function pieChart(region) {
         textposition: 'outside',
         automargin: true,
         plot_bgcolor: 'black',
-        paper_bgcolor: '#111111',
+        paper_bgcolor: '#0d0d0d',
         marker: {
           colors: [
             '#002047',
@@ -172,7 +172,7 @@ function pieChart(region) {
       },
       showlegend: true,
       plot_bgcolor: 'black',
-      paper_bgcolor: '#111111',
+      paper_bgcolor: '#0d0d0d',
       font: {
         color: 'white',
         family: 'Roboto, san-serif',
@@ -237,8 +237,8 @@ function lineChart() {
       text: 'Sales by Region',
     },
     // showlegend: true,
-    plot_bgcolor: '#111111',
-    paper_bgcolor: '#111111',
+    plot_bgcolor: 'black',
+    paper_bgcolor: '#0d0d0d',
     font: {
       color: 'white',
       family: 'Roboto, san-serif',
