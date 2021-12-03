@@ -1,7 +1,7 @@
 function init() {
   let firstRegion = "na_sales"
   barChart(firstRegion)
-  pieChart()
+  pieChart(firstRegion)
   lineChart()
   carousel()
   // Dropdown menu event handler ID
@@ -15,7 +15,7 @@ function init() {
 /////// BAR CHART FUNCTION ////////
 
 function barChart(region) {
-  // Read in data with JSON
+  // Query the SQL Database for Data
   d3.json('/data').then((json_data) => {
     // Grab json data
     let data = json_data
@@ -27,7 +27,7 @@ function barChart(region) {
     let samplePublishers = []
     let sampleGenre = []
     let samplePlatform = []
-    var regionName = ""
+    let regionName = ""
     // Loop through 100
     for (let i = 0; i <= 49; i++) {
       sampleData.push(data[i])
@@ -75,14 +75,14 @@ function barChart(region) {
       },
     ]
     let barLayout = {
-      width: 800,
+      width: 600,
       height: 400,
       title: `${regionName} Sales Data`,
       xaxis: { title: 'Game Rank' },
       yaxis: { title: `${regionName} Sales ($)` },
       hovermode: sampleNames,
-      plot_bgcolor: 'black',
-      paper_bgcolor: '#0d0d0d',
+      plot_bgcolor: '#111111',
+      paper_bgcolor: '#111111',
       font: {
         color: 'white',
         family: 'Roboto, san-serif',
@@ -99,24 +99,45 @@ function barChart(region) {
 
 /////// PIE CHART FUNCTION ////////
 
-function pieChart() {
-  // Read in data with JSON
+function pieChart(region) {
+  // Query the SQL Database for Data
   d3.json('/data').then((json_data) => {
     // Grab json data
     let data = json_data
     let sampleGenre = []
-    let sampleRank = []
+    let sampleSales = []
+    let regionName = ""
     // Loop through 100
     for (let i = 0; i <= 49; i++) {
       sampleGenre.push(data[i].genre)
-      sampleRank.push(data[i].rank)
+      
+      if (region == 'na_sales') {
+        sampleSales.push(data[i].na_sales)
+        regionName = 'North America'
+      }
+      else if (region == 'eu_sales') {
+        sampleSales.push(data[i].eu_sales)
+        regionName = 'Europe'
+      }
+      else if (region == 'jp_sales') {
+        sampleSales.push(data[i].jp_sales)
+        regionName = 'Japan'
+      }
+      else if ( region == 'other_sales') {
+        sampleSales.push(data[i].other_sales)
+        regionName = 'Other'
+      }
+      else if ( region == 'global_sales') {
+        sampleSales.push(data[i].global_sales)
+        regionName = 'Global'
+      }
     }
     // Setting Values for pie chart
     let pieValues = sampleGenre.slice(0, 10)
     // Setting Data points
     let pieData = [
       {
-        values: sampleRank,
+        values: sampleSales,
         labels: pieValues,
         type: 'pie',
         hole: 0.4,
@@ -124,7 +145,7 @@ function pieChart() {
         textposition: 'outside',
         automargin: true,
         plot_bgcolor: 'black',
-        paper_bgcolor: '#0d0d0d',
+        paper_bgcolor: '#111111',
         marker: {
           colors: [
             '#002047',
@@ -147,11 +168,11 @@ function pieChart() {
       width: 600,
       margin: { t: 90, b: 50, l: 0, r: 0, pad: 4 },
       title: {
-        text: 'Top Played Genres',
+        text: `Top Played Genres in Region: ${regionName}`,
       },
       showlegend: true,
       plot_bgcolor: 'black',
-      paper_bgcolor: '#0d0d0d',
+      paper_bgcolor: '#111111',
       font: {
         color: 'white',
         family: 'Roboto, san-serif',
@@ -216,8 +237,8 @@ function lineChart() {
       text: 'Sales by Region',
     },
     // showlegend: true,
-    plot_bgcolor: 'black',
-    paper_bgcolor: '#0d0d0d',
+    plot_bgcolor: '#111111',
+    paper_bgcolor: '#111111',
     font: {
       color: 'white',
       family: 'Roboto, san-serif',
@@ -234,6 +255,7 @@ function lineChart() {
 function optionChanged(newRegion) {
   // Fetch new data each time a new sample is selected
   barChart(newRegion)
+  pieChart(newRegion)
 };
 /////// CAROUSEL FUNCTION ////////
 
