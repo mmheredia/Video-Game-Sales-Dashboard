@@ -9,7 +9,9 @@
     crossorigin="anonymous" />
   <link rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href={{url_for('static', filename='css/style.css' )}}>
+  <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
   <title>Video Game Dashboard</title>
 </head>
 <body>
@@ -20,24 +22,38 @@
           DASHBOARD</a>
       </nav>
     </div>
+    <div class ="row-fluid">
+      <div class = "col-md-12">
+        <div class="owl-carousel owl-theme">
+          {% for item in quotes %}
+          <div class ="item"><h4>{{item}}</h4></div>
+          {% endfor %}
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-2">
         <div class="well">
-          <h5>Select A Year:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+          <h5>Select A Sales Region:</h5>
+          <select id="selDataset" onchange="optionChanged(this.value)">
+            <option value="na_sales">North America</option>
+            <option value="eu_sales">Europe</option>
+            <option value="jp_sales">Japan</option>
+            <option value="other_sales">Other</option>
+            <option value="global_sales">Global</option>
+          </select>
         </div>
       </div>
-        <div class="col-md-10">
-          <div id="bar">
-          </div>
-        </div>
     </div>
-    <div class="row">
+    <div class="row-fluid">
       <div class="col-md-6">
-        <div id="pie">
-        </div>
+        <div id="bar"></div>
       </div>
       <div class="col-md-6">
+        <div id="pie"></div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="col-md-12">
         <div id="line">
         </div>
       </div>
@@ -49,7 +65,9 @@
   </footer>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src={{url_for('static', filename='js/script.js' )}}>
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/owl.carousel.min.js"></script>
+  <script src="static/js/script.js"></script>
   </script>
 </body>
 </html>

@@ -4,19 +4,48 @@ from flask import Flask, jsonify, render_template
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.automap import automap_base
+from bs4 import BeautifulSoup as bs
+from splinter import Browser
+from webdriver_manager.chrome import ChromeDriverManager
+
+def scrape():
+    # Splinter set up
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
+    # Create dictonary instance
+    dict = {}
+    # URL
+    url = "https://www.wepc.com/news/video-game-statistics/"
+    # Request response from URL
+    browser.visit(url)
+    # Assign the document grab to a variable
+
+    # Scrape page into Soup
+    html = browser.html
+    soup = bs(html, "html.parser")
+    quotes = []
+    
+    # Pulls all of the website's game quotes.
+    blockquote = soup.find_all('p', class_= "elementor-blockquote__content")
+    
+    # Grabs the text of the first 12 and saves them into a list.
+    i = 0
+    while i <= 11:
+        quotes.append(blockquote[i].get_text())
+        i+=1
+    return quotes
+
 
 # Init App
 app = Flask(__name__)
 
 # Route Section
-
-
 @app.route('/')
 def index():
-    return render_template("index.html")
+    quotes = scrape()
+    return render_template("index.html", quotes = quotes)
 
-
-@app.route("/static/js/script.js")
+@app.route("/static/js/<filename>")
 def get_static(filename):
     with open(f'static/js/{filename}') as f:
         return f.read()
@@ -32,12 +61,12 @@ def datafinder():
 
     Base = automap_base()
     Base.prepare(engine, reflect=True)
-    Gamedata = Base.classes.games_data
+    gamedata = Base.classes.games_data
 
     session = Session(engine)
-    query = session.query(Gamedata.rank, Gamedata.name, Gamedata.platform, Gamedata.year,
-                          Gamedata.genre, Gamedata.publisher, Gamedata.na_sales, Gamedata.eu_sales, Gamedata.jp_sales,
-                          Gamedata.other_sales, Gamedata.global_sales)
+    query = session.query(gamedata.rank, gamedata.name, gamedata.platform, gamedata.year,
+                          gamedata.genre, gamedata.publisher, gamedata.na_sales, gamedata.eu_sales, gamedata.jp_sales,
+                          gamedata.other_sales, gamedata.global_sales)
 
     data = query.all()
 
@@ -59,7 +88,6 @@ def datafinder():
         na_sales, eu_sales, jp_sales, other_sales, global_sales in data]
 
     return jsonify(data)
-
 
 if __name__ == "__main__":
     app.run(debug=True)

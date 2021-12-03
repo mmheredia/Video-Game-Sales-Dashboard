@@ -1,19 +1,14 @@
 function init() {
-  barChart()
-  pieChart()
-  lineChart()
   carousel()
-  // Dropdown menu event handler ID
-  const selector = d3.select('#selDataset')
-  // Populate dropdown menu option
-  d3.json('static/data/games.json').then((json_data) => {
-    let sampleYears = data.years
-  })
+  let firstRegion = "na_sales"
+  barChart(firstRegion)
+  pieChart(firstRegion)
+  lineChart()
 }
 
 /////// BAR CHART FUNCTION ////////
 
-function barChart() {
+function barChart(region) {
   // Read in data with JSON
   d3.json('/data').then((json_data) => {
     // Grab json data
@@ -26,15 +21,35 @@ function barChart() {
     let samplePublishers = []
     let sampleGenre = []
     let samplePlatform = []
+    let regionName = ""
     // Loop through 100
     for (let i = 0; i <= 49; i++) {
       sampleData.push(data[i])
       sampleRank.push(data[i].rank)
       sampleNames.push(data[i].name)
-      sampleSales.push(data[i].global_sales)
       samplePublishers.push(data[i].publisher)
       sampleGenre.push(data[i].genre)
       samplePlatform.push(data[i].platform)
+      if (region == 'na_sales') {
+        sampleSales.push(data[i].na_sales)
+        regionName = 'North America'
+      }
+      else if (region == 'eu_sales') {
+        sampleSales.push(data[i].eu_sales)
+        regionName = 'Europe'
+      }
+      else if (region == 'jp_sales') {
+        sampleSales.push(data[i].jp_sales)
+        regionName = 'Japan'
+      }
+      else if ( region == 'other_sales') {
+        sampleSales.push(data[i].other_sales)
+        regionName = 'Other'
+      }
+      else if ( region == 'global_sales') {
+        sampleSales.push(data[i].global_sales)
+        regionName = 'Global'
+      }
     }
     let xticks = sampleRank
       .map((x) => +x)
@@ -54,11 +69,11 @@ function barChart() {
       },
     ]
     let barLayout = {
-      width: 800,
+      width: 600,
       height: 400,
-      title: 'Global Sales Data',
+      title: `${regionName} Sales Data`,
       xaxis: { title: 'Game Rank' },
-      yaxis: { title: 'Global Sales $' },
+      yaxis: { title: `${regionName} Sales ($)` },
       hovermode: sampleNames,
       plot_bgcolor: 'black',
       paper_bgcolor: '#0d0d0d',
@@ -78,24 +93,45 @@ function barChart() {
 
 /////// PIE CHART FUNCTION ////////
 
-function pieChart() {
+function pieChart(region) {
   // Read in data with JSON
-  d3.json('static/data/games.json').then((json_data) => {
+  d3.json('/data').then((json_data) => {
     // Grab json data
     let data = json_data
     let sampleGenre = []
-    let sampleRank = []
+    let sampleSales = []
+    let regionName = ""
     // Loop through 100
     for (let i = 0; i <= 49; i++) {
       sampleGenre.push(data[i].genre)
-      sampleRank.push(data[i].rank)
+      
+      if (region == 'na_sales') {
+        sampleSales.push(data[i].na_sales)
+        regionName = 'North America'
+      }
+      else if (region == 'eu_sales') {
+        sampleSales.push(data[i].eu_sales)
+        regionName = 'Europe'
+      }
+      else if (region == 'jp_sales') {
+        sampleSales.push(data[i].jp_sales)
+        regionName = 'Japan'
+      }
+      else if ( region == 'other_sales') {
+        sampleSales.push(data[i].other_sales)
+        regionName = 'Other'
+      }
+      else if ( region == 'global_sales') {
+        sampleSales.push(data[i].global_sales)
+        regionName = 'Global'
+      }
     }
     // Setting Values for pie chart
     let pieValues = sampleGenre.slice(0, 10)
     // Setting Data points
     let pieData = [
       {
-        values: sampleRank,
+        values: sampleSales,
         labels: pieValues,
         type: 'pie',
         hole: 0.4,
@@ -126,7 +162,7 @@ function pieChart() {
       width: 600,
       margin: { t: 90, b: 50, l: 0, r: 0, pad: 4 },
       title: {
-        text: 'Top Played Genres',
+        text: `Top Played Genres in Region: ${regionName}`,
       },
       showlegend: true,
       plot_bgcolor: 'black',
@@ -143,76 +179,100 @@ function pieChart() {
 /////// LINE GRAPH FUNCTION ////////
 
 function lineChart() {
-  d3.json('../static/data/games_sorted.json').then((json_sorted) => {
-    let sorted_data = json_sorted
-    // Grab specific variables
-    let sampleGlobalSales = []
-    let sampleNASales = []
-    let sampleEUSales = []
-    let sampleJPSales = []
-    let sampleYear = []
 
-    // Loop through 50
-    for (let i = 0; i <= 49; i++) {
-      sampleGlobalSales.push(sorted_data[i].global_sales)
-      sampleNASales.push(sorted_data[i].na_sales)
-      sampleEUSales.push(sorted_data[i].eu_sales)
-      sampleJPSales.push(sorted_data[i].jp_sales)
-      sampleYear.push(sorted_data[i].year)
-    }
+  let sampleYears = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2020]
+  let sampleNASales = [608.48, 482.00, 309.86, 309.54, 263.94, 205.64, 45.32, 0.00, 0.54]
+  let sampleEUSales = [353.14, 334.62, 237.52, 251.60, 254.26, 195.42, 53.52, 0.00, 0.00]
+  let sampleJPSales = [118.98, 106.08, 95.18, 78.92, 67.44, 27.34, 0.10, 0.00]
+  let sampleOtherSales = [119.80, 108.78, 75.64, 79.64, 80.04, 60.02, 15.50, 0.00, 0.04]
+  let sampleGlobalSales = [1200.40, 1031.48, 726.50, 674.16, 528.52, 141.68]
 
-    var GLOBAL = {
-      x: sampleYear,
-      y: sampleGlobalSales,
-      type: 'scatter',
-    }
+  var GLOBAL = {
+    x: sampleYears,
+    y: sampleGlobalSales,
+    type: 'scatter',
+    name: 'Global',
+  }
 
-    var NA = {
-      x: sampleYear,
-      y: sampleNASales,
-      type: 'scatter',
-    }
+  var NA = {
+    x: sampleYears,
+    y: sampleNASales,
+    type: 'scatter',
+    name: 'NA America Sales',
+  }
 
-    var EU = {
-      x: sampleYear,
-      y: sampleEUSales,
-      type: 'scatter',
-    }
+  var EU = {
+    x: sampleYears,
+    y: sampleEUSales,
+    type: 'scatter',
+    name: 'EU Sales',
+  }
 
-    var JP = {
-      x: sampleYear,
-      y: sampleJPSales,
-      type: 'scatter',
-    }
+  var JP = {
+    x: sampleYears,
+    y: sampleJPSales,
+    type: 'scatter',
+    name: 'JP Sales',
+  }
 
-    var salesData = [GLOBAL, NA, EU, JP]
+  var OTHER = {
+    x: sampleYears,
+    y: sampleOtherSales,
+    type: 'scatter',
+    name: 'Other',
+  }
 
-    var lineLayout = {
-      height: 400,
-      width: 600,
-      title: {
-        text: 'Regional Sales',
-      },
-      // showlegend: true,
-      plot_bgcolor: 'black',
-      paper_bgcolor: '#0d0d0d',
-      font: {
-        color: 'white',
-        family: 'Roboto, san-serif',
-      },
-      margin: {
-        pad: 2,
-      },
-    }
+  var salesData = [GLOBAL, NA, EU, JP, OTHER]
 
-    Plotly.newPlot('line', salesData, lineLayout)
-  })
+  var lineLayout = {
+    height: 400,
+    width: 600,
+    title: {
+      text: 'Sales by Region',
+    },
+    // showlegend: true,
+    plot_bgcolor: 'black',
+    paper_bgcolor: '#0d0d0d',
+    font: {
+      color: 'white',
+      family: 'Roboto, san-serif',
+    },
+    margin: {
+      pad: 2,
+    },
+  }
+
+  Plotly.newPlot('line', salesData, lineLayout)
 }
 
+/////// DROPDOWN FUNCTION ////////
+function optionChanged(newRegion) {
+  // Fetch new data each time a new sample is selected
+  barChart(newRegion)
+  pieChart(newRegion)
+};
 /////// CAROUSEL FUNCTION ////////
 
-function carousel() {}
-
+function carousel() {
+  var owl = $('.owl-carousel');
+  owl.owlCarousel({
+      items:4,
+      loop:true,
+      margin:15,
+      autoplay:true,
+      autoplayTimeout:2000,
+      autoplayHoverPause:true
+  });
+  $('.play').on('click',function(){
+      owl.trigger('play.owl.autoplay',[2000])
+  })
+  $('.stop').on('click',function(){
+      owl.trigger('stop.owl.autoplay')
+  })
+}
 /////// INITIALIZING ALL FUNCTIONS TO RUN ////////
+
+
+
 
 init()
