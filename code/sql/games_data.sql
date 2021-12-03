@@ -1,6 +1,7 @@
 DROP TABLE games_data;
 
 CREATE TABLE games_data(
+	game_id SERIAL PRIMARY KEY,
 	rank INT,
 	name TEXT,
 	platform TEXT,
@@ -28,6 +29,46 @@ ORDER BY year DESC;
 SELECT DISTINCT year
 FROM year_data
 ORDER BY year ASC;
+
+DROP TABLE data_2010;
+
+CREATE TABLE data_2010 AS
+	SELECT * FROM year_data 
+	WHERE year='2011';
+	
+SELECT * FROM data_2010;
+
+DROP TABLE data_2011;
+
+CREATE TABLE data_2011 AS
+	SELECT * FROM year_data 
+	WHERE year='2011';
+	
+SELECT * FROM data_2011;
+
+DROP TABLE data_2012;
+
+CREATE TABLE data_2012 AS
+	SELECT * FROM year_data 
+	WHERE year='2012';
+	
+SELECT * FROM data_2012;
+
+DROP TABLE data_2013;
+
+CREATE TABLE data_2013 AS
+	SELECT * FROM year_data 
+	WHERE year='2013';
+	
+SELECT * FROM data_2013;
+
+DROP TABLE data_2014;
+
+CREATE TABLE data_2014 AS
+	SELECT * FROM year_data 
+	WHERE year='2014';
+	
+SELECT * FROM data_2014;
 
 DROP TABLE data_2015;
 
@@ -71,15 +112,6 @@ CREATE TABLE sales_data (
 	other_sales FLOAT,
 	global_sales FLOAT
 );
-
-INSERT INTO sales_data (year, na_sales, eu_sales, jp_sales, other_sales, global_sales)
-VALUES (2015, 205.64, 195.42, 67.44, 60.02, 528.52),
-	(2016, 45.32, 53.52, 27.34,	15.50, 141.68),
-	(2017, 0.00, 0.00, 0.10, 0.00, 0.10),
-	(2020, 0.54, 0.00, 0.00, 0.04, 0.58);
-	
-SELECT * FROM sales_data;
-
 
 INSERT INTO sales_data (year, na_sales, eu_sales, jp_sales, other_sales, global_sales)
 VALUES 
