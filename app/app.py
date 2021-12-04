@@ -30,7 +30,7 @@ def scrape():
     # Pulls all of the website's game quotes.
     blockquote = soup.find_all('p', class_= "elementor-blockquote__content")
     # Grabs the text of the first 12 and saves them into a list.
-    i = 2
+    i = 0
     while i <= 11:
         quotes.append(blockquote[i].get_text())
         i+=1
