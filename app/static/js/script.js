@@ -1,15 +1,9 @@
 function init() {
   let firstRegion = 'na_sales'
   barChart(firstRegion)
-  pieChart()
+  pieChart(firstRegion)
   lineChart()
   carousel()
-  // Dropdown menu event handler ID
-  //const selector = d3.select('#selDataset')
-  // Populate dropdown menu option
-  //d3.json('static/data/games.json').then((json_data) => {
-  //let sampleYears = data.years
-  //})
 }
 
 /////// BAR CHART FUNCTION ////////
@@ -146,23 +140,39 @@ function barChart(region) {
 
 /////// PIE CHART FUNCTION ////////
 
-function pieChart() {
+function pieChart(region) {
   d3.json('/data').then((json_data) => {
     // Grab json data
     let data = json_data
     let sampleGenre = []
-    let sampleRank = []
+    let sampleSales = []
+    let regionName = ''
     // Loop through 100
     for (let i = 0; i <= 49; i++) {
       sampleGenre.push(data[i].genre)
-      sampleRank.push(data[i].rank)
+      if (region == 'na_sales') {
+        sampleSales.push(data[i].na_sales)
+        regionName = 'North America'
+      } else if (region == 'eu_sales') {
+        sampleSales.push(data[i].eu_sales)
+        regionName = 'Europe'
+      } else if (region == 'jp_sales') {
+        sampleSales.push(data[i].jp_sales)
+        regionName = 'Japan'
+      } else if (region == 'other_sales') {
+        sampleSales.push(data[i].other_sales)
+        regionName = 'Other'
+      } else if (region == 'global_sales') {
+        sampleSales.push(data[i].global_sales)
+        regionName = 'Global'
+      }
     }
     // Setting Values for pie chart
     let pieValues = sampleGenre.slice(0, 10)
     // Setting Data points
     let pieData = [
       {
-        values: sampleRank,
+        values: sampleSales,
         labels: pieValues,
         type: 'pie',
         hole: 0.3,
@@ -188,8 +198,9 @@ function pieChart() {
     let pieLayout = {
       height: 400,
       width: 550,
+      margin: { t: 90, b: 50, l: 0, r: 0, pad: 2 },
       title: {
-        text: 'Top Played Genres',
+        text: `Top Played Genres in Region: ${regionName}`,
       },
       showlegend: true,
       plot_bgcolor: 'black',
@@ -197,9 +208,6 @@ function pieChart() {
       font: {
         color: 'white',
         family: 'Roboto, san-serif',
-      },
-      margin: {
-        pad: 4,
       },
     }
 
