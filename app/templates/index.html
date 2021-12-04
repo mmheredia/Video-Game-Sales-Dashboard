@@ -22,6 +22,14 @@
         <h1 class="navbar-head"><i class="fas fa-gamepad"></i> DASHBOARD</h1>
       </nav>
     </div>
+    <div class ="row-fluid">
+      <div class = "col-md-12">
+        <div class="owl-carousel owl-theme">
+          {% for item in quotes %}
+          <div class ="item"><h4>{{item}}</h4></div>
+          {% endfor %}
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12">
         <div class="owl-carousel owl-theme">
@@ -54,7 +62,7 @@
         <div id="bar"></div>
       </div>
     </div>
-    <div class="row">
+    <div class="row-fluid">
       <div class="col-md-6">
         <div id="pie"></div>
       </div>

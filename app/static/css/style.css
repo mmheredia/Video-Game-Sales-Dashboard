@@ -51,11 +51,13 @@ h1 {
   height: 18rem;
 }
 
+
 .card {
   border: solid white 3px;
   border-radius: 10px;
   background-color: #0a0a0a;
 }
+
 
 .owl-carousel {
   padding-bottom: 5rem;
@@ -67,6 +69,7 @@ h1 {
 
 .card-text {
   text-align: center;
+
 }
 /* DROPDOWN STYLING */
 
