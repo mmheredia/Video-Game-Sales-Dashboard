@@ -22,8 +22,8 @@
         <h1 class="navbar-head"><i class="fas fa-gamepad"></i> DASHBOARD</h1>
       </nav>
     </div>
-    <div class="row-fluid">
-      <div class="col-lg-12">
+    <div class="row">
+      <div class="col-md-12">
         <div class="owl-carousel owl-theme">
           {% for item in quotes %}
           <div class="item">
@@ -32,43 +32,44 @@
           {% endfor %}
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-2">
-          <div class="well">
-            <h5>Select A Sales Region:</h5>
-            <select id="selDataset" onchange="optionChanged(this.value)">
-              <option value="na_sales">North America</option>
-              <option value="eu_sales">Europe</option>
-              <option value="jp_sales">Japan</option>
-              <option value="other_sales">Other</option>
-              <option value="global_sales">Global</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-lg-8">
-          <div id="bar"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well">
+          <h5>Select A Sales Region:</h5>
+          <select id="selDataset" onchange="optionChanged(this.value)">
+            <option value="na_sales">North America</option>
+            <option value="eu_sales">Europe</option>
+            <option value="jp_sales">Japan</option>
+            <option value="other_sales">Other</option>
+            <option value="global_sales">Global</option>
+          </select>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div id="pie"></div>
-        </div>
-        <div class="col-md-6">
-          <div id="line"></div>
-        </div>
+      <div class="col-md-10">
+        <div id="bar"></div>
       </div>
     </div>
-    <footer>
-      <p>
-        &#9432; 3rd party dark-mode extensions may interfere with
-        chart visualization contrast when enabled!
-      </p>
-    </footer>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/owl.carousel.min.js"></script>
-    <script src="static/js/script.js"></script>
+    <div class="row">
+      <div class="col-md-6">
+        <div id="pie"></div>
+      </div>
+      <div class="col-md-6">
+        <div id="line"></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>
+      &#9432; 3rd party dark-mode extensions may interfere with
+      chart visualization contrast when enabled!
+    </p>
+  </footer>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/owl.carousel.min.js"></script>
+  <script src="static/js/script.js"></script>
 </body>
 
 </html>
