@@ -1,2 +1,6 @@
 requirements.txt
 /app/__pycache__
+app/static/css/owl.carousel.min.css
+app/static/css/owl.theme.default.min.css
+app/static/js/jquery.min.js
+app/static/js/owl.carousel.min.js

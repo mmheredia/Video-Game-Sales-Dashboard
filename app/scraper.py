@@ -19,7 +19,9 @@ def scrape():
     # Request response from URL
     browser.visit(url)
     # Assign the document grab to a variable
-   
+
+
+
     # Scrape page into Soup
     html = browser.html
     soup = bs(html, "html.parser")
@@ -34,5 +36,6 @@ def scrape():
     while i <= 11:
         quotes.append(blockquote[i].get_text())
         i+=1
+
 
 scrape()

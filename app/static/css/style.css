@@ -14,12 +14,9 @@ body {
 /* CONTAINER STYLING */
 
 .container {
-  width: 100%;
   padding-bottom: 3rem;
   justify-content: center;
-  align-items: center;
 }
-
 
 /* NAVBAR STYLING */
 
@@ -31,38 +28,74 @@ nav {
   width: 100%;
 }
 
-/* NAVBAR HEADER ICON STYLING */
+/* NAVBAR HEADER STYLING */
 
 i {
-  color: yellow;
+  color: #dec26d;
   padding-right: 10px;
 }
 
-/* NAVBAR HEADER TEXT STYLING */
-
-a {
-  color: white;
+h1 {
+  font-weight: 600;
 }
 
-a:hover {
-  color: yellow;
-  text-decoration: none;
+/* OWL SETTINGS */
+.card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 18rem;
 }
 
+
+.card {
+  border: solid white 3px;
+  border-radius: 10px;
+  background-color: #0a0a0a;
+}
+
+
+.owl-carousel {
+  padding-bottom: 5rem;
+}
+
+.owl-dots {
+  padding-top: 2rem;
+}
+
+.card-text {
+  text-align: center;
+
+}
 /* DROPDOWN STYLING */
 
 #selDataset {
-  color:black;
+  color: black;
+  font-weight: 600;
+  font-size: 15px;
 }
+
+.sample-metadata,
+#sample-metadata {
+  background-color: #0a0a0a;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  margin: -1px;
+}
+
 div .well {
   border: 0px;
   border-radius: 0px;
   margin-bottom: 5rem;
-  background-color: #111111;
+  background-color: #0a0a0a;
   color: white;
-  border: 3px solid white;
+  border: 2px solid white;
+  font-weight: 600;
   border-radius: 5px;
-  padding: 20px;
 }
 
 /* SIMILAR GRAPH STYLING */
@@ -70,10 +103,14 @@ div .well {
 #pie,
 #line {
   margin-top: 40px;
+  width: 100%;
+}
+
+#line {
+  padding-left: 5rem;
 }
 
 /* FOOTER STYLING */
-
 footer {
   text-align: center;
   padding-top: 10rem;
