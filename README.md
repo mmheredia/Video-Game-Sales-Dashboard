@@ -2,17 +2,17 @@
 
 <!-- HEADER -->
 
-# Video-Game-Sales-Dashboard
-
----
-
-<!-- ABOUT PROJECT -->
+# Video Game Sales Dashboard
 
 ## About
 
 ---
 
-This is a Data Visualization Dashboard built with a collection of technology. Flask, Python, Javascript, Plotly, SQL and much more were used to create this application.
+### This is a Data Visualization Dashboard built with a collection of technology. Flask, Python, Javascript, Plotly, SQL and much more were used to create this application.
+
+<br>
+
+![dash](app/static/img/dashboard.gif)
 
 <!-- TECH/TOOLS  -->
 
@@ -87,9 +87,9 @@ For more basic knowledge of Flask, you can refer to the documenration here: [doc
 
 ```
 Video-Games-Sales-Dashboard
+|
 |   .gitignore
 |   README.md
-|   requirements.txt
 |
 +---app
 |   |   app.py
@@ -100,13 +100,15 @@ Video-Games-Sales-Dashboard
 |   |   |       style.css
 |   |   |
 |   |   +---img
+|   |   |       chart.svg
+|   |   |       dashboard.gif
 |   |   |
 |   |   \---js
 |   |           script.js
 |   |
-|   +---templates
-|   |       index.html
-|   |
+|   \---templates
+|           index.html
+|
 \---code
     +---csv
     |       clean_vgsales.csv
@@ -117,7 +119,7 @@ Video-Games-Sales-Dashboard
 
 ```
 
-## Data
+## Data Table
 
 | Rank |                     Name                     | Platform | Year |    Genre     |          Publisher          | NA Sales | EU Sales | JP Sales | Other Sales | Global Sales |
 | :--: | :------------------------------------------: | :------: | :--: | :----------: | :-------------------------: | :------: | :------: | :------: | :---------: | :----------: |
@@ -171,18 +173,3 @@ Video-Games-Sales-Dashboard
 |  48  |                Gran Turismo 4                |   PS2    | 2004 |    Racing    | Sony Computer Entertainment |   3.01   |   0.01   |   1.1    |    7.53     |    11.65     |
 |  49  |              Super Mario Galaxy              |   Wii    | 2007 |   Platform   |          Nintendo           |   6.16   |   3.4    |   1.2    |    0.76     |    11.52     |
 |  50  |  Pokemon Omega Ruby/Pokemon Alpha Sapphire   |   3DS    | 2014 | Role-Playing |          Nintendo           |   4.23   |   3.37   |   3.08   |    0.65     |    11.33     |
-
-<!-- NEED TO FORMAT STILL! -->
-
- <!-- | 50 | 51 | Super Mario Land 2: 6 Golden Coins | GB | 1992 | Adventure | Nintendo | 6.16 | 2.04 | 2.69 | 0.29 | 11.18 | 51 | 52 | Grand Theft Auto IV | X360 | 2008 | Action | Take-Two Interactive | 6.76 | 3.1 | 0.14 | 1.03 | 11.03 | 52 | 53 | Gran Turismo | PS | 1997 | Racing | Sony Computer Entertainment | 4.02 | 3.87 | 2.54 | 0.52 | 10.95 | 53 | 54 | Super Mario 3D Land | 3DS | 2011 | Platform | Nintendo | 4.89 | 2.99 | 2.13 | 0.78 | 10.79 | 54 | 55 | Gran Turismo 5 | PS3 | 2010 | Racing | Sony Computer Entertainment | 2.96 | 4.88 | 0.81 | 2.12 | 10.77 | 55 | 56 | Call of Duty: Modern Warfare 2 | PS3 | 2009 | Shooter | Activision | 4.99 | 3.69 | 0.38 | 1.63 | 10.69 | 56 | 57 | Grand Theft Auto IV | PS3 | 2008 | Action | Take-Two Interactive | 4.76 | 3.76 | 0.44 | 1.62 | 10.58 | 57 | 58 | Super Mario All-Stars | SNES | 1993 | Platform | Nintendo | 5.99 | 2.15 | 2.12 | 0.29 | 10.55 | 58 | 59 | Pokemon FireRed/Pokemon LeafGreen | GBA | 2004 | Role-Playing | Nintendo | 4.34 | 2.65 | 3.15 | 0.35 | 10.49 | 59 | 60 | Super Mario 64 | DS | 2004 | Platform | Nintendo | 5.08 | 3.11 | 1.25 | 0.98 | 10.42 | 60 | 61 | Just Dance 3 | Wii | 2011 | Misc | Ubisoft | 6.05 | 3.15 | 0 | 1.07 | 10.27 | 61 | 62 | Call of Duty: Ghosts | X360 | 2013 | Shooter | Activision | 6.72 | 2.63 | 0.04 | 0.82 | 10.21 | 62 | 63 | Halo: Reach | X360 | 2010 | Shooter | Microsoft Game Studios | 7.03 | 1.98 | 0.08 | 0.78 | 9.87 | 63 | 64 | Mario Kart 64 | N64 | 1996 | Racing | Nintendo | 5.55 | 1.94 | 2.23 | 0.15 | 9.87 | 64 | 65 | New Super Mario Bros. 2 | 3DS | 2012 | Platform | Nintendo | 3.66 | 3.07 | 2.47 | 0.63 | 9.83 | 65 | 66 | Halo 4 | X360 | 2012 | Shooter | Microsoft Game Studios | 6.63 | 2.36 | 0.04 | 0.73 | 9.76 | 66 | 67 | Final Fantasy VII | PS | 1997 | Role-Playing | Sony Computer Entertainment | 3.01 | 2.47 | 3.28 | 0.96 | 9.72 | 67 | 68 | Call of Duty: Ghosts | PS3 | 2013 | Shooter | Activision | 4.09 | 3.73 | 0.38 | 1.38 | 9.58 | 68 | 69 | Just Dance 2 | Wii | 2010 | Misc | Ubisoft | 5.84 | 2.89 | 0.01 | 0.78 | 9.52 | 69 | 70 | Gran Turismo 2 | PS | 1999 | Racing | Sony Computer Entertainment | 3.88 | 3.42 | 1.69 | 0.5 | 9.49 | 70 | 71 | Call of Duty 4: Modern Warfare | X360 | 2007 | Shooter | Activision | 5.91 | 2.38 | 0.13 | 0.9 | 9.32 | 71 | 72 | Donkey Kong Country | SNES | 1994 | Platform | Nintendo | 4.36 | 1.71 | 3 | 0.23 | 9.3 | 72 | 73 | Minecraft | X360 | 2013 | Misc | Microsoft Game Studios | 5.58 | 2.83 | 0.02 | 0.77 | 9.2 | 73 | 74 | Animal Crossing: New Leaf | 3DS | 2012 | Simulation | Nintendo | 2.01 | 2.32 | 4.36 | 0.41 | 9.1 | 74 | 75 | Mario Party DS | DS | 2007 | Misc | Nintendo | 4.46 | 1.88 | 1.98 | 0.7 | 9.02 | 75 | 76 | The Elder Scrolls V: Skyrim | X360 | 2011 | Role-Playing | Bethesda Softworks | 5.03 | 2.86 | 0.1 | 0.85 | 8.84 | 76 | 77 | Super Mario Kart | SNES | 1992 | Racing | Nintendo | 3.54 | 1.24 | 3.81 | 0.18 | 8.77 | 77 | 78 | FIFA 16 | PS4 | 2015 | Sports | Electronic Arts | 1.11 | 6.06 | 0.06 | 1.26 | 8.49 | 78 | 79 | Wii Party | Wii | 2010 | Misc | Nintendo | 1.79 | 3.53 | 2.49 | 0.68 | 8.49 | 79 | 80 | Halo 2 | XB | 2004 | Shooter | Microsoft Game Studios | 6.82 | 1.53 | 0.05 | 0.08 | 8.48 | 80 | 81 | Mario Party 8 | Wii | 2007 | Misc | Nintendo | 3.81 | 2.3 | 1.58 | 0.73 | 8.42 | 81 | 82 | Pokemon Black 2/Pokemon White 2 | DS | 2012 | Role-Playing | Nintendo | 2.91 | 1.86 | 3.14 | 0.43 | 8.34 | 82 | 83 | FIFA Soccer 13 | PS3 | 2012 | Action | Electronic Arts | 1.06 | 5.05 | 0.13 | 2.01 | 8.25 | 83 | 84 | The Sims 3 | PC | 2009 | Simulation | Electronic Arts | 0.98 | 6.42 | 0 | 0.71 | 8.11 | 84 | 85 | GoldenEye 007 | N64 | 1997 | Shooter | Nintendo | 5.8 | 2.01 | 0.13 | 0.15 | 8.09 | 85 | 86 | Mario & Sonic at the Olympic Games | Wii | 2007 | Sports | Sega | 2.58 | 3.9 | 0.66 | 0.91 | 8.05 | 86 | 87 | Final Fantasy X | PS2 | 2001 | Role-Playing | Sony Computer Entertainment | 2.91 | 2.07 | 2.73 | 0.33 | 8.04 | 87 | 88 | Final Fantasy VIII | PS | 1999 | Role-Playing | SquareSoft | 2.28 | 1.72 | 3.63 | 0.23 | 7.86 | 88 | 89 | Pokémon Platinum Version | DS | 2008 | Role-Playing | Nintendo | 2.82 | 1.78 | 2.69 | 0.55 | 7.84 | 89 | 90 | Pac-Man | 2600 | 1982 | Puzzle | Atari | 7.28 | 0.45 | 0 | 0.08 | 7.81 | 90 | 91 | Grand Theft Auto: Liberty City Stories | PSP | 2005 | Action | Take-Two Interactive | 2.9 | 2.83 | 0.24 | 1.75 | 7.72 | 91 | 92 | Super Mario Galaxy 2 | Wii | 2010 | Platform | Nintendo | 3.66 | 2.42 | 0.98 | 0.64 | 7.7 | 92 | 93 | Star Wars Battlefront (2015) | PS4 | 2015 | Shooter | Electronic Arts | 2.93 | 3.29 | 0.22 | 1.23 | 7.67 | 93 | 94 | Call of Duty: Advanced Warfare | PS4 | 2014 | Shooter | Activision | 2.8 | 3.3 | 0.14 | 1.37 | 7.61 | 94 | 95 | The Legend of Zelda: Ocarina of Time | N64 | 1998 | Action | Nintendo | 4.1 | 1.89 | 1.45 | 0.16 | 7.6 | 95 | 96 | Crash Bandicoot 2: Cortex Strikes Back | PS | 1997 | Platform | Sony Computer Entertainment | 3.78 | 2.17 | 1.31 | 0.31 | 7.57 | 96 | 97 | Super Mario Bros. 2 | NES | 1988 | Platform | Nintendo | 5.39 | 1.18 | 0.7 | 0.19 | 7.46 | 97 | 98 | Super Smash Bros. for Wii U and 3DS | 3DS | 2014 | Fighting | Nintendo | 3.24 | 1.35 | 2.42 | 0.43 | 7.44 | 98 | 99 | Call of Duty: World at War | X360 | 2008 | Shooter | Activision | 4.79 | 1.9 | 0 | 0.69 | 7.38 | 99 | 100 | Battlefield 3 | X360 | 2011 | Shooter | Electronic Arts | 4.46 | 2.13 | 0.06 | 0.69 | 7.34 | -->
-
-<!-- WIP SS -->
-<!-- will update as we go -->
-
-## UI Idea
-
----
-
-</br>
-
-![rough-draft-dashboard](app/static/img/testDash.png)

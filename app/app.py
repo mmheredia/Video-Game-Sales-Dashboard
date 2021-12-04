@@ -1,16 +1,12 @@
+# App start
 # Imports
 from flask import Flask, jsonify, render_template
-from sqlalchemy import create_engine, func
+from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.automap import automap_base
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
-
-
-# APP START #
-
-# Scraper
 
 def scrape():
     # Splinter set up
@@ -31,19 +27,13 @@ def scrape():
     
     # Pulls all of the website's game quotes.
     blockquote = soup.find_all('p', class_= "elementor-blockquote__content")
-
-
     
-
     # Grabs the text of the first 12 and saves them into a list.
     i = 0
     while i <= 11:
         quotes.append(blockquote[i].get_text())
         i+=1
-        return quotes
-
-
-
+    return quotes
 
 
 # Init App
@@ -71,10 +61,6 @@ def datafinder():
 
     Base = automap_base()
     Base.prepare(engine, reflect=True)
-
-
-
-
     gamedata = Base.classes.games_data
 
     session = Session(engine)
@@ -100,10 +86,9 @@ def datafinder():
         'global_sales': global_sales,
     } for rank, name, platform, year, genre, publisher,
         na_sales, eu_sales, jp_sales, other_sales, global_sales in data]
-
     return jsonify(data)
-
-
+    
+    
 @app.route('/linedata')
 def linefinder():
     username = "postgres"
@@ -133,8 +118,8 @@ def linefinder():
         'global_sales': global_sales,
     } for year, na_sales, eu_sales, jp_sales, other_sales, global_sales in data]
 
-    return jsonify(data)
 
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.run(debug=True)

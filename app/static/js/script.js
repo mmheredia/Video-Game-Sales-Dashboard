@@ -1,9 +1,9 @@
 function init() {
-  carousel()
-  let firstRegion = "na_sales"
+  let firstRegion = 'na_sales'
   barChart(firstRegion)
   pieChart(firstRegion)
   lineChart()
+  carousel()
 }
 
 /////// BAR CHART FUNCTION ////////
@@ -21,10 +21,8 @@ function barChart(region) {
     let samplePublishers = []
     let sampleGenre = []
     let samplePlatform = []
-
     var regionName = ''
     // Loop through 50
-
     for (let i = 0; i <= 49; i++) {
       sampleData.push(data[i])
       sampleRank.push(data[i].rank)
@@ -44,7 +42,7 @@ function barChart(region) {
       } else if (region == 'other_sales') {
         sampleSales.push(data[i].other_sales)
         regionName = 'Other'
-      } else if (region == 'global_sales'
+      } else if (region == 'global_sales') {
         sampleSales.push(data[i].global_sales)
         regionName = 'Global'
       }
@@ -119,7 +117,7 @@ function barChart(region) {
       },
     ]
     let barLayout = {
-      width: 600,
+      width: 800,
       height: 400,
       title: `${regionName} Sales Data`,
       xaxis: { title: 'Game Rank' },
@@ -141,35 +139,30 @@ function barChart(region) {
 }
 
 /////// PIE CHART FUNCTION ////////
+
 function pieChart(region) {
-  // Read in data with JSON
   d3.json('/data').then((json_data) => {
     // Grab json data
     let data = json_data
     let sampleGenre = []
     let sampleSales = []
-    let regionName = ""
+    let regionName = ''
     // Loop through 100
     for (let i = 0; i <= 49; i++) {
       sampleGenre.push(data[i].genre)
-      
       if (region == 'na_sales') {
         sampleSales.push(data[i].na_sales)
         regionName = 'North America'
-      }
-      else if (region == 'eu_sales') {
+      } else if (region == 'eu_sales') {
         sampleSales.push(data[i].eu_sales)
         regionName = 'Europe'
-      }
-      else if (region == 'jp_sales') {
+      } else if (region == 'jp_sales') {
         sampleSales.push(data[i].jp_sales)
         regionName = 'Japan'
-      }
-      else if ( region == 'other_sales') {
+      } else if (region == 'other_sales') {
         sampleSales.push(data[i].other_sales)
         regionName = 'Other'
-      }
-      else if ( region == 'global_sales') {
+      } else if (region == 'global_sales') {
         sampleSales.push(data[i].global_sales)
         regionName = 'Global'
       }
@@ -205,6 +198,7 @@ function pieChart(region) {
     let pieLayout = {
       height: 400,
       width: 550,
+      margin: { t: 90, b: 50, l: 0, r: 0, pad: 2 },
       title: {
         text: `Top Played Genres in Region: ${regionName}`,
       },
@@ -214,9 +208,6 @@ function pieChart(region) {
       font: {
         color: 'white',
         family: 'Roboto, san-serif',
-      },
-      margin: {
-        pad: 4,
       },
     }
 
@@ -370,12 +361,8 @@ function carousel() {
   })
   $('.stop').on('click', function () {
     owl.trigger('stop.owl.autoplay')
-
   })
 }
 /////// INITIALIZING ALL FUNCTIONS TO RUN ////////
-
-
-
 
 init()
