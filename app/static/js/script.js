@@ -204,44 +204,49 @@ function lineChart() {
       
     }
 
-    var trace1 = {
+    var NASales = {
       x: sampleYear,
+      name: 'NA Sales',
       y: sampleNASales,
       type: 'scatter'
     };
 
-    var trace2 = {
+    var EUSales = {
       x: sampleYear,
+      name: 'EU Sales',
       y: sampleEUSales,
       type: 'scatter'
     };
 
-    var trace3 = {
+    var JPSales = {
       x: sampleYear,
+      name: 'JP Sales',
       y: sampleJPSales,
       type: 'scatter'
     };
 
-    var trace4 = {
+    var OtherSales = {
       x: sampleYear,
+      name: 'Other Sales',
       y: sampleOtherSales,
       type: 'scatter'
     };
 
-    var trace5 = {
+    var GlobalSales = {
       x: sampleYear,
+      name: 'Global Sales',
       y: sampleGlobalSales,
       type: 'scatter'
     };
     
-    let lineData = [trace1, trace2, trace3, trace4, trace5];
+    let lineData = [NASales, EUSales, JPSales, OtherSales, GlobalSales];
 
     let lineLayout = {
       width: 600,
       height: 400,
       title: `${regionName} Sales Data`,
       xaxis: { title: 'Year' },
-      yaxis: { title: `${regionName} Sales Data ($)` },
+      yaxis: { title: `Sales Data ($)` },
       hovermode: sampleSales,
       plot_bgcolor: 'black',
       paper_bgcolor: '#0d0d0d',
