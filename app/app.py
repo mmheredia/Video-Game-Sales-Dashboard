@@ -86,6 +86,38 @@ def datafinder():
         'global_sales': global_sales,
     } for rank, name, platform, year, genre, publisher,
         na_sales, eu_sales, jp_sales, other_sales, global_sales in data]
+    return jsonify(data)
+    
+    
+@app.route('/linedata')
+def linefinder():
+    username = "postgres"
+    password = "postgres"
+
+    rds_connection_string = f"{username}:{password}@localhost:5432/VideoGamesProject"
+    engine = create_engine(f'postgresql://{rds_connection_string}')
+
+    Base = automap_base()
+    Base.prepare(engine, reflect=True)
+    linedata = Base.classes.sales_data
+
+    session = Session(engine)
+    query = session.query(linedata.year, linedata.na_sales, linedata.eu_sales, linedata.jp_sales,
+                          linedata.other_sales, linedata.global_sales)
+
+    data = query.all()
+
+    session.close()
+
+    data = [{
+        'year': year,
+        'na_sales': na_sales,
+        'eu_sales': eu_sales,
+        'jp_sales': jp_sales,
+        'other_sales': other_sales,
+        'global_sales': global_sales,
+    } for year, na_sales, eu_sales, jp_sales, other_sales, global_sales in data]
+
 
     return jsonify(data)
 
