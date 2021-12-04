@@ -40,6 +40,7 @@ def scrape():
     while i <= 11:
         quotes.append(blockquote[i].get_text())
         i+=1
+        return quotes
 
 
 
