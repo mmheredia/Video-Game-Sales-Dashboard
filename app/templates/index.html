@@ -26,8 +26,12 @@
       <div class="col-md-12">
         <div class="owl-carousel owl-theme">
           {% for item in quotes %}
-          <div class="item">
-            <h4>{{item}}</h4>
+          <div class="card justify-content-center">
+            <div class="card-body">
+              <div class="card-text">
+                <p>{{item}}</p>
+              </div>
+            </div>
           </div>
           {% endfor %}
         </div>

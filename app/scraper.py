@@ -29,9 +29,10 @@ def scrape():
     blockquote = soup.find_all('p', class_= "elementor-blockquote__content")
     
     # Grabs the text of the first 12 and saves them into a
-    i = 0
+    i = 3
     while i <= 11:
         quotes.append(blockquote[i].get_text())
         i+=1
+        return quotes
 
 scrape()
